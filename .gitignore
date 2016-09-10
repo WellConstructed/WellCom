@@ -1,0 +1,10 @@
+venv
+*.pyc
+staticfiles
+.DS_Store
+.envrc
+.direnv
+secrets.py
+.cache
+__pycache__
+.env

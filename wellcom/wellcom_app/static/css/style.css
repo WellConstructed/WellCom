@@ -1,0 +1,12 @@
+.nav-item {
+  font-size: 20px;
+}
+
+.navbar-brand {
+  font-size: 20px;
+}
+
+.container-fluid {
+  padding-left: 40px;
+  padding-right: 40px;
+}

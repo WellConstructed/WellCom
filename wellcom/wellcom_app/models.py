@@ -32,6 +32,13 @@ class DeviceData(models.Model):
     timestamp = models.DateTimeField()
     temperature_c = models.DecimalField(max_digits=5, decimal_places=2)
 
+
+class Usage(models.Model):
+    well = models.ForeignKey(Well)
+    date = models.DateField()
+    usage_count = models.IntegerField()
+
+
 class WaterTest(models.Model):
     """All parameters are recorded in mg/l unless otherwise stated"""
 

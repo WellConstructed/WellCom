@@ -19,6 +19,8 @@ class Well(models.Model):
         self.last_update = timezone.now()
         return super(Well, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.name
 
 class Notes(models.Model):
     well = models.ForeignKey(Well)

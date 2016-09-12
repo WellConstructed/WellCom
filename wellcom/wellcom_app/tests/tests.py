@@ -2,6 +2,7 @@ from django.test import TestCase
 from wellcom_app.models import Well, Notes, DeviceData, WaterTest, Usage
 from django.utils import timezone
 from django.core.urlresolvers import reverse
+from time import sleep
 
 # Using this for Django testing guidance:
 # https://realpython.com/blog/python/testing-in-django-part-1-best-practices-and-examples/
@@ -27,7 +28,17 @@ class WellTest(TestCase):
     def test_well_creation(self):
         w = self.create_well()
         self.assertTrue(isinstance(w, Well))
-        self.assertEqual(w.__str__(), w.title)
+        self.assertEqual(w.__str__(), w.name)
+
+    def test_well_save(self):
+        w = self.create_well()
+        create_time = w.last_update
+        sleep(1)
+        w.save(name='Test Saved Well')
+
+        self.assertTrue(create_time is not w.last_update)
+        self.assertTrue(isinstance(w, Well))
+        self.assertEqual(w.__str__(), 'Test Saved Well')
 
 
 class NotesTest(TestCase):

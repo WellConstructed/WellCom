@@ -5,7 +5,8 @@ from .models import Well, Note, DeviceData, Usage, WaterTest
 class WellSerializer(serializers.ModelSerializer):
     class Meta:
         model = Well
-        fields = ('name', 'latitude', 'longitude', 'country', 'date_installed', 'last_update')
+        fields = ('name', 'latitude', 'longitude', 'country', 'date_installed',
+                  'last_update')
 
 
 class NoteSerializer(serializers.ModelSerializer):

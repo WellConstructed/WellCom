@@ -44,20 +44,24 @@ class WellTest(TestCase):
 
 class NoteTest(TestCase):
 
-    def create_note(self, well=WellTest.create_well(),
-                    title="Test note title", text="Test note text"):
+    def create_note(self, title="Test note title", text="Test note text"):
+        well = WellTest().create_well()
+        well.save()
+
         return Note.objects.create(well=well, title=title, text=text)
 
     def test_note_creation(self):
-        note = self.create_well()
+        note = self.create_note()
         self.assertTrue(isinstance(note, Note))
         self.assertEqual(note.__str__(), note.title)
 
 
 class DeviceDataTest(TestCase):
 
-    def create_device_data(self, well=WellTest.create_well(),
-                           timestamp=timezone.now(), temperature_c=32):
+    def create_device_data(self, timestamp=timezone.now(), temperature_c=32):
+        well = WellTest().create_well()
+        well.save()
+
         return DeviceData.objects.create(well=well, timestamp=timestamp,
                                          temperature_c=temperature_c)
 

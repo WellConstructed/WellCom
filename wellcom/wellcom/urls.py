@@ -3,6 +3,12 @@ from django.contrib import admin
 from rest_framework import routers
 from wellcom_app import views
 
+router = routers.DefaultRouter()
+router.register(r'well', views.WellViewSet)
+router.register(r'note', views.NoteViewSet)
+router.register(r'device_data', views.DeviceDataViewSet)
+router.register(r'usage', views.UsageViewSet)
+router.register(r'water_test', views.WaterTestProfileViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

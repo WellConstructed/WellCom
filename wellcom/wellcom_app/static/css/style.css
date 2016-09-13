@@ -20,12 +20,17 @@ h2 {
   padding-top: 20px;
 }
 
+html, body {
+  height: 100%;
+}
+
 .wrapper {
     min-height: 100%;
     height: auto !important;
     height: 100%;
     margin: 0 auto -15px; /* the bottom margin is the negative value of the footer's height */
 }
+
 .footer, .push {
     height: 15px; /* .push must be the same height as .footer */
 }

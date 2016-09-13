@@ -1,5 +1,5 @@
 from django.test import TestCase
-from wellcom_app.models import Well, Notes, DeviceData, WaterTest, Usage
+from wellcom_app.models import Well, Note, DeviceData, WaterTest, Usage
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 from time import sleep
@@ -26,23 +26,32 @@ class WellTest(TestCase):
                                    )
 
     def test_well_creation(self):
-        w = self.create_well()
-        self.assertTrue(isinstance(w, Well))
-        self.assertEqual(w.__str__(), w.name)
+        well = self.create_well()
+        self.assertTrue(isinstance(well, Well))
+        self.assertEqual(well.__str__(), well.name)
 
     def test_well_save(self):
-        w = self.create_well()
-        create_time = w.last_update
+        well = self.create_well()
+        create_time = well.last_update
         sleep(1)
-        w.save(name='Test Saved Well')
+        well.name = 'Test Saved Well'
+        well.save()
 
         self.assertTrue(create_time is not w.last_update)
         self.assertTrue(isinstance(w, Well))
         self.assertEqual(w.__str__(), 'Test Saved Well')
 
 
-class NotesTest(TestCase):
-    pass
+class NoteTest(TestCase):
+
+    def create_note(self, well=WellTest.create_well(),
+                    title="Test note title", text="Test note text"):
+        return Note.objects.create()
+
+    def test_note_creation(self):
+        note = self.create_well()
+        self.assertTrue(isinstance(note, Note))
+        self.assertEqual(note.__str__(), note.title)
 
 
 class DeviceDataTest(TestCase):
@@ -55,3 +64,6 @@ class WaterTestTest(TestCase):
 
 class UsageTest(TestCase):
     pass
+
+
+# VIEWS TESTS

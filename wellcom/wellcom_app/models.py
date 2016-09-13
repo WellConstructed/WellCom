@@ -22,12 +22,14 @@ class Well(models.Model):
     def __str__(self):
         return self.name
 
-class Notes(models.Model):
+class Note(models.Model):
     well = models.ForeignKey(Well)
     title = models.CharField(max_length=200)
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.title
 
 class DeviceData(models.Model):
     well = models.ForeignKey(Well)

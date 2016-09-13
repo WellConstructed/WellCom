@@ -22,6 +22,7 @@ class Well(models.Model):
     def __str__(self):
         return self.name
 
+
 class Note(models.Model):
     well = models.ForeignKey(Well)
     title = models.CharField(max_length=200)
@@ -31,16 +32,25 @@ class Note(models.Model):
     def __str__(self):
         return self.title
 
+
 class DeviceData(models.Model):
     well = models.ForeignKey(Well)
     timestamp = models.DateTimeField()
     temperature_c = models.DecimalField(max_digits=5, decimal_places=2)
 
+    def __str__(self):
+        return "{} | {} | {}".format(self.well, self.timestamp,
+                                     self.temperature_c)
+
 
 class Usage(models.Model):
+    # TODO: Write functions to generate instances of this model from a list of DeviceData objects
     well = models.ForeignKey(Well)
     date = models.DateField()
     usage_count = models.IntegerField()
+
+    def __str__(self):
+        return self.title
 
 
 class WaterTest(models.Model):
@@ -73,3 +83,6 @@ class WaterTest(models.Model):
     ammonia_nitrogen = models.DecimalField(max_digits=15, decimal_places=4)
     manganese = models.DecimalField(max_digits=15, decimal_places=4)
     aluminum = models.DecimalField(max_digits=15, decimal_places=4)
+
+    def __str__(self):
+        return 'Well {} tested on {}'.format(self.well, self.date)

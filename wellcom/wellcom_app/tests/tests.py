@@ -37,16 +37,16 @@ class WellTest(TestCase):
         well.name = 'Test Saved Well'
         well.save()
 
-        self.assertTrue(create_time is not w.last_update)
-        self.assertTrue(isinstance(w, Well))
-        self.assertEqual(w.__str__(), 'Test Saved Well')
+        self.assertTrue(create_time is not well.last_update)
+        self.assertTrue(isinstance(well, Well))
+        self.assertEqual(well.__str__(), 'Test Saved Well')
 
 
 class NoteTest(TestCase):
 
     def create_note(self, well=WellTest.create_well(),
                     title="Test note title", text="Test note text"):
-        return Note.objects.create()
+        return Note.objects.create(well=well, title=title, text=text)
 
     def test_note_creation(self):
         note = self.create_well()
@@ -55,11 +55,25 @@ class NoteTest(TestCase):
 
 
 class DeviceDataTest(TestCase):
-    pass
+
+    def create_device_data(self, well=WellTest.create_well(),
+                           timestamp=timezone.now(), temperature_c=32):
+        return DeviceData.objects.create(well=well, timestamp=timestamp,
+                                         temperature_c=temperature_c)
+
+    def test_device_data_creation(self):
+        device_data = self.create_device_data()
+        self.assertTrue(isinstance(device_data, DeviceData))
+        self.assertEqual(device_data.__str__(),
+                         "{} | {} | {}".format(device_data.well,
+                                               device_data.timestamp,
+                                               device_data.temperature_c))
 
 
 class WaterTestTest(TestCase):
-    pass
+
+    def create_water_test_data(self):
+        pass
 
 
 class UsageTest(TestCase):

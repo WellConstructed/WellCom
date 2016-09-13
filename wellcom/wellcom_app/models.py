@@ -8,6 +8,7 @@ class Well(models.Model):
     longitude = models.DecimalField(max_digits=11, decimal_places=7)
     country = models.CharField(max_length=200)  # Maybe automatically populate from lat/lon
     date_installed = models.DateField()
+    depth_m = models.DecimalField(max_digits=5, decimal_places=1, null=True)
     last_update = models.DateTimeField()
     estimated_users = models.IntegerField()  # hidden
     cost_usd = models.DecimalField(max_digits=8, decimal_places=2)  # hidden

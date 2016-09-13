@@ -20,15 +20,17 @@
     </tr>
   </thead>
   <tbody>
+    {% for well in wells %}
     <tr>
-      <td scope="row">Wells</td>
-      <td>Ghana</td>
-      <td>01/01/2015</td>
-      <td>50 meters</td>
-      <td>08/20/2016</td>
-      <td>30</td>
-      <td>1500</td>
+      <td scope="row">{{ well.name }}</td>
+      <td>{{well.country}}</td>
+      <td>{{well.date_installed}}</td>
+      <td>{{well.depth_m}}</td>
+      <td>{{well.last_update}}</td>
+      <td></td>
+      <td>{{well.estimated_users}}</td>
     </tr>
+    {% endfor %}
   </tbody>
 </table>
 </div>

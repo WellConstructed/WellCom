@@ -8,3 +8,4 @@ secrets.py
 .cache
 __pycache__
 .env
+.coverage

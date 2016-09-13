@@ -14,6 +14,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'coverage',
     'wellcom_app.apps.WellcomAppConfig',
     'rest_framework',
     'django.contrib.admin',
@@ -21,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.test',
     # Disable Django's own staticfiles handling in favour of WhiteNoise, for
     # greater consistency between gunicorn and `./manage.py runserver`. See:
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development

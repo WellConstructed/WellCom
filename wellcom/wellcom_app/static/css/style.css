@@ -10,3 +10,26 @@
   padding-left: 40px;
   padding-right: 40px;
 }
+
+.carousel-item {
+  height: 600px;
+  width: auto;
+}
+
+h2 {
+  padding-top: 20px;
+}
+
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -15px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+    height: 15px; /* .push must be the same height as .footer */
+}
+
+.footer {
+  text-align: center;
+}

@@ -5,5 +5,32 @@
 </title>
 
 {% block body %}
-  <h1> Hello World </h1>
+<div class="container">
+  <div id="carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel" data-slide-to="1"></li>
+      <li data-target="#carousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div class="carousel-item active">
+        <img src="{% static 'images/IMG_2749.jpg' %}" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/IMG_2839.jpg' %}" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/img3.jpg' %}" alt="Third slide">
+      </div>
+    </div>
+  </div>
+  
+  <h2> What we do </h2>
+    <p> enter text here </p>
+  <h2> Well Constructed </h2>
+    <p> info about well constructed here </p>
+  <h2> How it works </h2>
+    <p> links to documents and description </p>
+
+</div>
 {% endblock %}

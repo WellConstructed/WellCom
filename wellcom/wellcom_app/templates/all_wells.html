@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<title>
+{% block title %}WellCom{% endblock %}
+</title>
+
+{% block body %}
+<body>
+  <div class="container">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Country</th>
+      <th>Install Date</th>
+      <th>Depth</th>
+      <th>Last Update</th>
+      <th>Average Uses per Day</th>
+      <th>Estimated number of Users</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td scope="row">Wells</td>
+      <td>Ghana</td>
+      <td>01/01/2015</td>
+      <td>50 meters</td>
+      <td>08/20/2016</td>
+      <td>30</td>
+      <td>1500</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</body>
+{% endblock %}

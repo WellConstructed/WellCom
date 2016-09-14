@@ -101,7 +101,9 @@ DATABASES['default'].update(db_from_env)
 
 REST_FRAMEWORK = {
    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
-   'PAGE_SIZE': 10
+   # TODO: Set this to smaller size later
+   # TODO: Create classes for API's that should return larger page sizes http://www.django-rest-framework.org/api-guide/pagination/
+   'PAGE_SIZE': 50000
 }
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()

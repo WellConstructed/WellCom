@@ -39,14 +39,14 @@ html, body {
   text-align: center;
 }
 
-thead {
+#test_head {
   float: left;
 }
 
-thead th {
+#test_head #test_h {
   display: block;
 }
 
-tbody {
+#test_body {
   float: right;
 }

@@ -32,7 +32,11 @@ class WaterTestViewSet(viewsets.ModelViewSet):
 
 
 def index(request):
-    return render(request, 'index.html')
+    wells = Well.objects.all()
+    context = {
+        'wells': wells,
+    }
+    return render(request, 'index.html', context)
 
 
 def all_wells(request):
@@ -44,6 +48,7 @@ def all_wells(request):
 
 
 def well_detail(request, well_id):
+    wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
     try:
         water_tests = well.watertest_set.all()
@@ -51,6 +56,7 @@ def well_detail(request, well_id):
         water_tests = None
         print("No tests for this well")
     context = {
+        'wells': wells,
         'well': well,
         'water_tests': water_tests,
     }

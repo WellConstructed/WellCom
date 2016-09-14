@@ -23,37 +23,37 @@
     <div class="card card-block">
       <table>
         {% if water_tests %}
-      <thead>
+      <thead id="test_head">
         <tr>
-          <th>Date Tested</th>
-          <th>pH</th>
-          <th>Turbidity</th>
-          <th>True Color</th>
-          <th>conductivity</th>
-          <th>temperature</th>
-          <th>total iron</th>
-          <th> calcium </th>
-          <th>magnesium</th>
-          <th>chloride</th>
-          <th>sulphater</th>
-          <th>suspended solids</th>
-          <th>total dissolved solids</th>
-          <th>total solids</th>
-          <th>total alkalinity </th>
-          <th>total hardness</th>
-          <th>calcium hardness</th>
-          <th>magnesium hardness</th>
-          <th>copper</th>
-          <th>nitrite nitrogen</th>
-          <th>nitrate nitrogen</th>
-          <th> fluoride </th>
-          <th>MPN index</th>
-          <th>ammonia nitrogen</th>
-          <th>manganese</th>
-          <th>aluminum</th>
+          <th id="test_h">Date Tested</th>
+          <th id="test_h">pH</th>
+          <th id="test_h">Turbidity</th>
+          <th id="test_h">True Color</th>
+          <th id="test_h">conductivity</th>
+          <th id="test_h">temperature</th>
+          <th id="test_h">total iron</th>
+          <th id="test_h"> calcium </th>
+          <th id="test_h">magnesium</th>
+          <th id="test_h">chloride</th>
+          <th id="test_h">sulphater</th>
+          <th id="test_h">suspended solids</th>
+          <th id="test_h">total dissolved solids</th>
+          <th id="test_h">total solids</th>
+          <th id="test_h">total alkalinity </th>
+          <th id="test_h">total hardness</th>
+          <th id="test_h">calcium hardness</th>
+          <th id="test_h">magnesium hardness</th>
+          <th id="test_h">copper</th>
+          <th id="test_h">nitrite nitrogen</th>
+          <th id="test_h">nitrate nitrogen</th>
+          <th id="test_h"> fluoride </th>
+          <th id="test_h">MPN index</th>
+          <th id="test_h">ammonia nitrogen</th>
+          <th id="test_h">manganese</th>
+          <th id="test_h">aluminum</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="test_body">
         {% for test in water_tests %}
         <tr>
           <td>{{test.date}}</td>

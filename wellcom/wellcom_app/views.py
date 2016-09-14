@@ -55,9 +55,21 @@ def well_detail(request, well_id):
     except:
         water_tests = None
         print("No tests for this well")
+    try:
+        device_data = well.devicedata_set.all()
+    except:
+        device_data = None
+        print("No tests for this well")
+    try:
+        notes = well.note_set.all()
+    except:
+        notes = None
+        print("No tests for this well")
     context = {
         'wells': wells,
         'well': well,
         'water_tests': water_tests,
+        'device_data': device_data,
+        'notes': notes,
     }
     return render(request, 'well_detail.html', context)

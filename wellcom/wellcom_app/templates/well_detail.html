@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
 
-          <div id= "well_info" class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+          <div id= "well_info" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
               <h1>{{well.name}}</h1>
               <ul>
                   <li> Date Installed: {{well.date_installed}} </li>
@@ -18,14 +18,15 @@
               </ul>
           </div>
 
-          <div id= "well_graph" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-5 col-xl-5">
+          <div id= "well_graph" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-4 col-xl-4.5">
               Well graph will go here
           </div>
 
-          <div id= "well_map" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-5 col-xl-5">
+          <div id= "well_map" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-5 col-xl-4.5">
               Well map will go here
           </div>
           </div>
+    <div class="row">
     <p>
     <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Water Test results
@@ -174,15 +175,55 @@
         {% endif %}
       </tbody>
     </table>
-    </div>
   </div>
 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+    <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Last Update</th>
+        <th>Number of Uses</th>
+        <th> Overall average usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for well in wells %}
+      <tr>
+        <td scope="row">{{ well.last_update }}</td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  </div>
 
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6">
+      <h2> Notes: </h2>
+    {% for note in notes %}
+    <div class="card card-outline-secondary text-xs-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <h3 class="card-title"> {{note.title}}</h3>
+          <p>{{note.text}}</p>
+          <footer>{{note.created}} <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>{% endfor %}
+  </div>
 
-
+</div>
     </div>
 </body>
 {% endblock %} {% block scripts %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0xaWJqzGe98gvXk-mtPZjCEWunLYZuqQ&callback=initMap"async defer></script>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="{% static 'js/nv.d3.js' %}"></script>
 <script src="{% static 'js/graph.js' %}"></script>

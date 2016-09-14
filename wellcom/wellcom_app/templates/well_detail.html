@@ -1,19 +1,31 @@
-{% extends 'base.html' %}
-{% load staticfiles %}
+{% extends 'base.html' %} {% load staticfiles %}
 <title>
-{% block title %}WellCom{% endblock %}
+    {% block title %}WellCom{% endblock %}
 </title>
 
-{% block  body %}
-<body>
-  <div class="container">
+{% block body %}
 
-    <h1>{{well.name}}</h1>
-    <ul>
-    <li> Date Installed: {{well.date_installed}} </li>
-    <li> Longitude: {{well.longitude}} </li>
-    <li> Latitude: {{well.latitude}} </li>
-    </ul>
+<body>
+    <div class="container">
+        <div class="row">
+
+          <div id= "well_info" class="col-xs-12 col-sm-12 col-md-3 col-lg-2 col-xl-2">
+              <h1>{{well.name}}</h1>
+              <ul>
+                  <li> Date Installed: {{well.date_installed}} </li>
+                  <li> Longitude: {{well.longitude}} </li>
+                  <li> Latitude: {{well.latitude}} </li>
+              </ul>
+          </div>
+
+          <div id= "well_graph" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-5 col-xl-5">
+              Well graph will go here
+          </div>
+
+          <div id= "well_map" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-5 col-xl-5">
+              Well map will go here
+          </div>
+          </div>
     <p>
     <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Water Test results
@@ -165,6 +177,13 @@
     </div>
   </div>
 
-  </div>
+
+
+
+    </div>
 </body>
+{% endblock %} {% block scripts %}
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="{% static 'js/nv.d3.js' %}"></script>
+<script src="{% static 'js/graph.js' %}"></script>
 {% endblock %}

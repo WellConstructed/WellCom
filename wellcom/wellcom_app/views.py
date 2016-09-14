@@ -43,14 +43,13 @@ def all_wells(request):
     return render(request, 'all_wells.html', context)
 
 
-def well_detail(request, pk):
-    well = get_object_or_404(Well, id=pk)
+def well_detail(request, well_id):
+    well = get_object_or_404(Well, id=well_id)
     try:
-        water_tests = well.water_test_set.all()
+        water_tests = well.watertest_set.all()
     except:
         water_tests = None
         print("No tests for this well")
-    # water_tests = WaterTest.objects.get(pk=pk)
     context = {
         'well': well,
         'water_tests': water_tests,

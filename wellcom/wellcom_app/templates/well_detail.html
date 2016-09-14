@@ -9,9 +9,136 @@
   <div class="container">
 
     <h1>{{well.name}}</h1>
-    <h4> Date Installed: {{well.date_installed}} <h4>
-    <h4> Longitude: {{well.longitude}} </h4>
-    <h4> Latitude: {{well.latitude}} </h4>
+    <ul>
+    <li> Date Installed: {{well.date_installed}} </li>
+    <li> Longitude: {{well.longitude}} </li>
+    <li> Latitude: {{well.latitude}} </li>
+    </ul>
+    <p>
+    <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Water Test results
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-block">
+      <table>
+        {% if water_tests %}
+      <thead>
+        <tr>
+          <th>Date Tested</th>
+          <th>pH</th>
+          <th>Turbidity</th>
+          <th>True Color</th>
+          <th>conductivity</th>
+          <th>temperature</th>
+          <th>total iron</th>
+          <th> calcium </th>
+          <th>magnesium</th>
+          <th>chloride</th>
+          <th>sulphater</th>
+          <th>suspended solids</th>
+          <th>total dissolved solids</th>
+          <th>total solids</th>
+          <th>total alkalinity </th>
+          <th>total hardness</th>
+          <th>calcium hardness</th>
+          <th>magnesium hardness</th>
+          <th>copper</th>
+          <th>nitrite nitrogen</th>
+          <th>nitrate nitrogen</th>
+          <th> fluoride </th>
+          <th>MPN index</th>
+          <th>ammonia nitrogen</th>
+          <th>manganese</th>
+          <th>aluminum</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for test in water_tests %}
+        <tr>
+          <td>{{test.date}}</td>
+        </tr>
+        <tr>
+          <td>{{test.pH}}</td>
+        </tr>
+        <tr>
+          <td>{{test.turbidity_ntu}}</td>
+        </tr>
+        <tr>
+          <td>{{test.app_true_colour_hz}}</td>
+        </tr>
+        <tr>
+          <td>{{test.conductivity_uscm}}</td>
+        </tr>
+        <tr>
+          <td>{{test.temperature_c}}</td>
+        </tr>
+        <tr>
+          <td>{{test.total_iron}}</td>
+        </tr>
+        <tr>
+          <td>{{test.calcium}}</td>
+        </tr>
+        <tr>
+          <td>{{test.magnesium}}</td>
+        </tr>
+        <tr>
+          <td>{{test.chloride}}</td>
+        </tr>
+        <tr>
+          <td>{{test.sulphate}}</td>
+        </tr>
+        <tr>
+          <td>{{test.suspended_solids}}</td>
+        </tr>
+        <tr>
+          <td>{{test.total_dissolved_solids}}</td>
+        </tr>
+        <tr>
+          <td>{{test.total_solids}}</td>
+        </tr>
+        <tr>
+          <td>{{test.total_alkalinity}}</td>
+        </tr>
+        <tr>
+          <td>{{test.total_hardness}}</td>
+        </tr>
+        <tr>
+          <td>{{test.calcium_hardness}}</td>
+        </tr>
+        <tr>
+          <td>{{test.magnesium_hardness}}</td>
+        </tr>
+        <tr>
+          <td>{{test.copper}}</td>
+        </tr>
+        <tr>
+          <td>{{test.nitrite_nitrogen}}</td>
+        </tr>
+        <tr>
+          <td>{{test.nitrate_nitrogen}}</td>
+        </tr>
+        <tr>
+          <td>{{test.fluoride}}</td>
+        </tr>
+        <tr>
+          <td>{{test.mpn_index_tc_per_deciliter}}</td>
+        </tr>
+        <tr>
+          <td>{{test.ammonia_nitrogen}}</td>
+        </tr>
+        <tr>
+          <td>{{test.manganese}}</td>
+        </tr>
+        <tr>
+          <td>{{test.aluminum}}</td>
+        </tr>
+        {% endfor %}{% endif %}
+      </tbody>
+    </table>
+    </div>
+  </div>
+
   </div>
 </body>
 {% endblock %}

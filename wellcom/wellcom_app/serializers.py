@@ -6,21 +6,21 @@ class NoteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Note
-        fields = ('id', 'well', 'title', 'text', 'created', 'well_set')
+        fields = ('id', 'well', 'title', 'text', 'created')
 
 
 class DeviceDataSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DeviceData
-        fields = ('id', 'well', 'timestamp', 'temperature_c', 'well_set')
+        fields = ('id', 'well', 'timestamp', 'temperature_c')
 
 
 class UsageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Usage
-        fields = ('id', 'well', 'date', 'usage_count', 'well_set')
+        fields = ('id', 'well', 'date', 'usage_count')
 
 
 class WaterTestSerializer(serializers.ModelSerializer):

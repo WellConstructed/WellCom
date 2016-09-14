@@ -36,7 +36,6 @@ def index(request):
 
 def all_wells(request):
     wells = Well.objects.all()
-
     context = {
         'wells': wells,
     }
@@ -45,4 +44,10 @@ def all_wells(request):
 
 
 def well_detail(request):
-    return render(request, 'well_detail.html')
+    wells = Well.objects.all()
+    water_tests = WaterTest.objects.all()
+    context = {
+        'wells': wells,
+        'water_tests': water_tests,
+    }
+    return render(request, 'well_detail.html', context)

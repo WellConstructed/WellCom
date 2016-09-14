@@ -7,7 +7,7 @@ from .models import Well, Note, DeviceData, Usage, WaterTest
 
 
 class WellViewSet(viewsets.ModelViewSet):
-    queryset = Note.objects.all()
+    queryset = Well.objects.all()
     serializer_class = WellSerializer
 
 

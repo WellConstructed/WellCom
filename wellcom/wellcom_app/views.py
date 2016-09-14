@@ -39,12 +39,12 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def all_wells(request):
+def wells(request):
     wells = Well.objects.all()
     context = {
         'wells': wells,
     }
-    return render(request, 'all_wells.html', context)
+    return render(request, 'wells.html', context)
 
 
 def well_detail(request, well_id):

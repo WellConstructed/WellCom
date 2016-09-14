@@ -5,3 +5,4 @@ function initMap() {
       zoom: 8
     });
   }
+// new google.maps.event.addDomListener(window, "load", initMap);

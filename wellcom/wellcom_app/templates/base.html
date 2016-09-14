@@ -27,7 +27,9 @@
         <li class="nav-item dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"> Wells </a>
           <div class="dropdown-menu" aria-labelledby="Preview">
-            <a class="dropdown-item" href="#">Well 1 </a>
+            {% for well in wells %}
+            <a class="dropdown-item" href="{% url 'well_detail' well.pk %}">{{ well.name }}</a>
+            {% endfor %}
           </div>
         </li>
       </ul>

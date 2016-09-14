@@ -65,3 +65,7 @@ html, body {
 .card {
   margin: 20px;
 }
+
+#all_well_map {
+  height: 100%;
+}

@@ -16,7 +16,7 @@ $.ajax({
 
 
     nv.addGraph(function() {
-            var width = 600, height = 400;
+            // var width = 600, height = 400;
             var chart = nv.models.lineWithFocusChart();
             chart.brushExtent([50,70]);
 
@@ -46,7 +46,7 @@ $.ajax({
             d3.select('#chart svg')
             //    .datum(myData())
                .datum($device_data_json)
-               .style({ 'width': width, 'height': height })
+              //  .style({ 'width': width, 'height': height })
                .call(chart);
 
            nv.utils.windowResize(chart.update);

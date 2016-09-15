@@ -2,6 +2,9 @@
 <title>
     {% block title %}WellCom{% endblock %}
 </title>
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/graph.css' %}">
+{% endblock %}
 
 {% block body %}
 
@@ -18,8 +21,8 @@
               </ul>
           </div>
 
-          <div id= "well_graph" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-4 col-xl-4.5">
-              Well graph will go here
+          <div id= "chart" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-4 col-xl-4.5 with-3d-shadow with-transitions">
+              <svg></svg>
           </div>
 
           <div id= "well_map" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-5 col-xl-4.5">
@@ -223,9 +226,10 @@
 </div>
     </div>
 </body>
-{% endblock %} {% block scripts %}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0xaWJqzGe98gvXk-mtPZjCEWunLYZuqQ&callback=initMap" async defer></script>
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="{% static 'js/nv.d3.js' %}"></script>
-<script src="{% static 'js/graph.js' %}"></script>
+{% endblock %}
+{% block scripts %}
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0xaWJqzGe98gvXk-mtPZjCEWunLYZuqQ&callback=initMap" async defer></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="{% static 'js/nv.d3.js' %}"></script>
+  <script src="{% static 'js/graph.js' %}"></script>
 {% endblock %}

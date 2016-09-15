@@ -31,12 +31,12 @@ class WaterTestViewSet(viewsets.ModelViewSet):
     serializer_class = WaterTestSerializer
 
 
-def index(request):
+def about_us(request):
     wells = Well.objects.all()
     context = {
         'wells': wells,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'about_us.html', context)
 
 
 def wells(request):

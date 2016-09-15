@@ -4,10 +4,11 @@ var $wellData = {};
 var map;
 function initMap() {
     map = new google.maps.Map(document.getElementById('all_well_map'), {
-      center: {lat: -34.397, lng: 150.644},
+      center: {lat: 36.9930780, lng: -79.9046890},
       zoom: 8
     });
   }
+
 
 $.ajax({
   type: 'GET',
@@ -31,8 +32,22 @@ $.ajax({
               position: new google.maps.LatLng(Number($wellData[i].latitude), Number($wellData[i].longitude)),
               map: map
           });
+
+          infowindow = new google.maps.InfoWindow({
+               content: '<div id="content">' + '<strong>' + $wellData.name + '</strong>'
+            });
+
+
       }
 
+      google.maps.event.addListener(marker, 'click', function() {
+          content: infowindow;
+          infowindow.open(map, marker);
+        });
+      //
+      // marker.addListener('click', function() {
+      //   infowindow.open(map, marker);
+      // });
 
 
   },
@@ -41,6 +56,7 @@ $.ajax({
     console.log('Error getting the Well Data');
   }
 });
+
 
 // var infowindow = new google.maps.InfoWindow();
 

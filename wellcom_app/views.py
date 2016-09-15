@@ -73,3 +73,6 @@ def well_detail(request, well_id):
         'notes': notes,
     }
     return render(request, 'well_detail.html', context)
+
+def graph_temp(request):
+    return render(request, 'graph_temp.html')

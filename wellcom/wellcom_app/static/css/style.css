@@ -67,5 +67,7 @@ html, body {
 }
 
 #all_well_map {
-  height: 100px;
+  height: 500px;
+  width: 400px;
+  /*TODO: Make these % of the div, so it adjusts based on user screen size */
 }

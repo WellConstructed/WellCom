@@ -1,0 +1,10 @@
+svg {
+  border: 2px #033F79;
+  border-style: outset;
+  padding: 15px;
+  margin: 10px;
+}
+
+.nv-x .nv-axislabel {
+  transform: translate(0px,4em);
+}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<div id="chart" class='with-3d-shadow with-transitions'>
+  <svg></svg>
+</div>
+
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="{% static 'js/nv.d3.js' %}"></script>
+    <script src="{% static 'js/graph.js' %}"></script>
+{% endblock %}

@@ -63,7 +63,8 @@ $.ajax({
 function processDeviceData(device_data_table_data) {
     var series1 = [];
     for(var reading in device_data_table_data) {
-        var xN = Date(reading.timestamp).valueOf();
+        reading = device_data_table_data[reading];
+        var xN = Number(new Date(reading.timestamp));
         var yN = Number(reading.temperature_c);
         // console.log(xN);
         // console.log(typeof xN);

@@ -18,12 +18,9 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav">
           <a class="navbar-brand"><img id="logo" src='{% static 'images/wellcom.png' %}'></a>
-          <a class="navbar-brand" href="{% url 'index' %}">WellCom</a>
+          <a class="navbar-brand" href="{% url 'wells' %}">WellCom</a>
       </ul>
       <ul class="nav navbar-nav pull-xs-right">
-        <li class="nav-item">
-          <a href="{% url 'wells' %}">All Wells</a>
-        </li>
         <li class="nav-item dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"> Wells </a>
           <div class="dropdown-menu" aria-labelledby="Preview">
@@ -32,6 +29,10 @@
             {% endfor %}
           </div>
         </li>
+        <li class="nav-item">
+          <a href="{% url 'about_us' %}">About Us</a>
+        </li>
+
       </ul>
     </div>
 </nav>

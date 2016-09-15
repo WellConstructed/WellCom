@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 
+{% block header %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/graph.css' %}">
+{% endblock %}
+
 {% block body %}
 <div id="chart" class='with-3d-shadow with-transitions'>
   <svg></svg>

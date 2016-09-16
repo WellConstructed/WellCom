@@ -6,6 +6,11 @@
   font-size: 20px;
 }
 
+#logo {
+  height: 30px;
+  width: auto;
+}
+
 .container-fluid {
   padding-left: 40px;
   padding-right: 40px;
@@ -22,7 +27,7 @@ h2 {
 
 html, body {
   height: 100%;
-  background-color: #FAFAFA;
+  background-color: #EEEEFF;
 }
 
 .wrapper {

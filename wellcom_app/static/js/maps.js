@@ -30,9 +30,11 @@ $.ajax({
 
       var infowindow = new google.maps.InfoWindow();
 
-      // var image = new Image(100, 200);
-      //   image.src = '../images/wellcom.png';
-      //   console.log(image);
+      var image = {
+            url: 'https://wellcom-staging.herokuapp.com/static/images/BlueSymbol.png',
+            scaledSize: new google.maps.Size(45, 56),
+          };
+
 
       var marker, i;
 
@@ -42,7 +44,7 @@ $.ajax({
               // position: new google.maps.LatLng($wellData[i].latitude, $wellData[i].longitude),
               position: new google.maps.LatLng(Number($wellData[i].latitude), Number($wellData[i].longitude)),
               map: map,
-              icon: 'https://wellcom-staging.herokuapp.com/static/images/BlueSymbol.png',
+              icon: image,
           });
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {

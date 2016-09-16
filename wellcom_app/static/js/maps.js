@@ -6,9 +6,17 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('all_well_map'), {
       center: {lat: 36.9930780, lng: -79.9046890},
       zoom: 8,
-      scrollwheel: false
+      scrollwheel: false,
+      styles: [
+           {
+             featureType: 'all',
+             stylers: [
+               { saturation: -70 }
+             ]
+           }
+         ]
     });
-
+}
 
 
 $.ajax({
@@ -22,6 +30,12 @@ $.ajax({
 
       var infowindow = new google.maps.InfoWindow();
 
+      var image = {
+            url: 'https://wellcom-staging.herokuapp.com/static/images/BlueSymbol.png',
+            scaledSize: new google.maps.Size(45, 56),
+          };
+
+
       var marker, i;
 
       for (i = 0; i < $wellData.length; i++) {
@@ -29,7 +43,8 @@ $.ajax({
           marker = new google.maps.Marker({
               // position: new google.maps.LatLng($wellData[i].latitude, $wellData[i].longitude),
               position: new google.maps.LatLng(Number($wellData[i].latitude), Number($wellData[i].longitude)),
-              map: map
+              map: map,
+              icon: image,
           });
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
@@ -49,13 +64,3 @@ $.ajax({
   }
 
 });
-
-// infowindow = new google.maps.InfoWindow({
-//      content: '<div id="content">' + '<strong>' + $wellData[i].name + '</strong>'
-//   });
-//   google.maps.event.addListener(marker, 'click', function() {
-//         content: infowindow;
-//         infowindow.open(map, marker);
-//   })
-
-}

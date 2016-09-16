@@ -7,6 +7,7 @@
     </title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/nv.d3.css' %}">
     <meta name="viewport" content="initial-scale=1.0">
@@ -15,12 +16,16 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar">
     <div class="container-fluid">
       <ul class="nav navbar-nav">
-          <a class="navbar-brand"><img id="logo" src='{% static 'images/wellcom.png' %}'></a>
-          <a class="navbar-brand" href="{% url 'wells' %}">WellCom</a>
+          <a class="navbar-brand"><img id="logo" src='{% static 'images/WhiteLogo.png' %}'></a>
       </ul>
+
+      <ul class="nav navbar-nav">
+          <a class="navbar-brand" id="wellcom" href="{% url 'wells' %}">WellCom</a>
+      </ul>
+
       <ul class="nav navbar-nav pull-xs-right">
         <li class="nav-item dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"> Wells </a>
@@ -33,9 +38,9 @@
         <li class="nav-item">
           <a href="{% url 'about_us' %}">About Us</a>
         </li>
-
       </ul>
-    </div>
+
+  </div>
 </nav>
 <div class="wrapper">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>

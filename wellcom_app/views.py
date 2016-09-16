@@ -3,7 +3,7 @@ from .serializers import WellSerializer, NoteSerializer, DeviceDataSerializer
 from .serializers import UsageSerializer, WaterTestSerializer, TestSerializer
 from django.views import generic
 from rest_framework import viewsets, generics
-from .models import Well, Note, DeviceData, Usage, WaterTest
+from .models import Well, Note, DeviceData, Usage, WaterTest, Test
 
 
 class WellViewSet(viewsets.ModelViewSet):
@@ -32,7 +32,7 @@ class WaterTestViewSet(viewsets.ModelViewSet):
 
 
 class TestViewSet(viewsets.ModelViewSet):
-    queryset = WaterTest.objects.all()
+    queryset = Test.objects.all()
     serializer_class = TestSerializer
 
 

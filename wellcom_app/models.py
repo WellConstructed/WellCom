@@ -87,3 +87,7 @@ class WaterTest(models.Model):
 
     def __str__(self):
         return 'Well {} tested on {}'.format(self.well, self.date)
+
+
+class Test(models.Model):
+    text = models.TextField()

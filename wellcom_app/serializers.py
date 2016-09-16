@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Well, Note, DeviceData, Usage, WaterTest
+from .models import Well, Note, DeviceData, Usage, WaterTest, Test
 
 
 class NoteSerializer(serializers.ModelSerializer):
@@ -49,3 +49,10 @@ class WellSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'latitude', 'longitude', 'country',
                   'date_installed', 'last_update', 'note_set',
                   'device_data_set', 'usage_set', 'water_test_set')
+
+
+class TestSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Test
+        fields = ('id', 'text')

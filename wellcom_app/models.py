@@ -90,4 +90,12 @@ class WaterTest(models.Model):
 
 
 class Test(models.Model):
-    text = models.TextField()
+    text = models.TextField(null=True)
+    # timestamp = models.TextField(null=True)
+
+
+class DeviceInput(models.Model):
+    well = models.ForeignKey(Well)
+    time_int_seconds = models.IntegerField()
+    temp_readings = models.TextField()
+    time_added = models.DateTimeField(auto_now_add=True)

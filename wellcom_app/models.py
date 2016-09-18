@@ -91,7 +91,7 @@ class WaterTest(models.Model):
 
 class Test(models.Model):
     text = models.TextField(null=True)
-    # timestamp = models.TextField(null=True)
+    timestamp = models.DateTimeField()
 
 
 class DeviceInput(models.Model):

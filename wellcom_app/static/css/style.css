@@ -5,7 +5,7 @@ Navbar
 nav  {
   text-align: center;
   height: 100px;
-  background:  linear-gradient(to bottom, rgba(77, 77, 77, 1), rgba(238, 238, 255, 0.75));
+  background:  linear-gradient(to bottom, rgba(77, 77, 77, 1), rgba(157, 157, 165, 0.75));
   margin-bottom: 5%;
 }
 
@@ -84,6 +84,18 @@ h2 {
   padding-top: 20px;
 }
 
+h1 {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  color: #369FF4
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+}
+
 html, body {
   height: 100%;
   background-color: #EEEEFF;
@@ -97,7 +109,7 @@ body {
     min-height: 100%;
     height: auto !important;
     height: 100%;
-    margin: 0 auto -15px; /* the bottom margin is the negative value of the footer's height */
+    margin: 0 auto 0px; /* the bottom margin is the negative value of the footer's height */
 }
 
 .footer, .push {
@@ -130,7 +142,7 @@ body {
 }
 
 #all_well_map {
-  height: 700px;
+  height: 630px;
   width: 100%;
   /*TODO: Make these % of the div, so it adjusts based on user screen size */
 }

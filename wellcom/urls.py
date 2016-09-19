@@ -9,10 +9,13 @@ router.register(r'device_data', views.DeviceDataViewSet)
 router.register(r'usage', views.UsageViewSet)
 router.register(r'water_test', views.WaterTestViewSet)
 router.register(r'well', views.WellViewSet)
+router.register(r'device_input', views.DeviceInputViewSet)
+router.register(r'test', views.TestViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('wellcom_app.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/', include('rest_framework.urls',
+        namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
 ]

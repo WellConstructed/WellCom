@@ -87,3 +87,15 @@ class WaterTest(models.Model):
 
     def __str__(self):
         return 'Well {} tested on {}'.format(self.well, self.date)
+
+
+class Test(models.Model):
+    text = models.TextField(null=True)
+    timestamp = models.DateTimeField()
+
+
+class DeviceInput(models.Model):
+    well = models.ForeignKey(Well)
+    time_int_seconds = models.IntegerField()
+    temp_readings = models.TextField()
+    time_added = models.DateTimeField(auto_now_add=True)

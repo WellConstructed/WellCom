@@ -70,7 +70,8 @@ class WaterTest(models.Model):
     chloride = models.DecimalField(max_digits=15, decimal_places=4)
     sulphate = models.DecimalField(max_digits=15, decimal_places=4)
     suspended_solids = models.DecimalField(max_digits=15, decimal_places=4)
-    total_dissolved_solids = models.DecimalField(max_digits=15, decimal_places=4)
+    total_dissolved_solids = models.DecimalField(max_digits=15,
+                                                 decimal_places=4)
     total_solids = models.DecimalField(max_digits=15, decimal_places=4)
     total_alkalinity = models.DecimalField(max_digits=15, decimal_places=4)
     total_hardness = models.DecimalField(max_digits=15, decimal_places=4)
@@ -80,7 +81,8 @@ class WaterTest(models.Model):
     nitrite_nitrogen = models.DecimalField(max_digits=15, decimal_places=4)
     nitrate_nitrogen = models.DecimalField(max_digits=15, decimal_places=4)
     fluoride = models.DecimalField(max_digits=15, decimal_places=4)
-    mpn_index_tc_per_deciliter = models.DecimalField(max_digits=15, decimal_places=4)
+    mpn_index_tc_per_deciliter = models.DecimalField(max_digits=15,
+                                                     decimal_places=4)
     ammonia_nitrogen = models.DecimalField(max_digits=15, decimal_places=4)
     manganese = models.DecimalField(max_digits=15, decimal_places=4)
     aluminum = models.DecimalField(max_digits=15, decimal_places=4)
@@ -96,6 +98,9 @@ class Test(models.Model):
 
 class DeviceInput(models.Model):
     well = models.ForeignKey(Well)
-    time_int_seconds = models.IntegerField()
-    temp_readings = models.TextField()
-    time_added = models.DateTimeField(auto_now_add=True)
+    batt_voltage_mv = models.IntegerField(default=-1)
+    batt_percent_charged = models.IntegerField(default=-1)
+    adc_voltage_mv = models.IntegerField(default=-1)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField()
+    temp_readings_c = models.TextField()

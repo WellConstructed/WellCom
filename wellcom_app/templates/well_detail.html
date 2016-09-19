@@ -3,233 +3,222 @@
     {% block title %}WellCom{% endblock %}
 </title>
 {% block header %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/graph.css' %}">
-{% endblock %}
-
-{% block body %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/graph.css' %}">
+{% endblock %} {% block body %}
 
 <body>
     <div class="container">
         <div class="row">
+            <div id="well_info" class="col-xs-12 col-sm-12 col-md-4">
+                <h1>{{well.name}}</h1>
+                <ul>
+                    <li> Date Installed: {{well.date_installed}} </li>
+                    <li> Longitude: {{well.longitude}} </li>
+                    <li> Latitude: {{well.latitude}} </li>
+                    <li> Map here </li>
 
-          <div id= "well_info" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-              <h1>{{well.name}}</h1>
-              <ul>
-                  <li> Date Installed: {{well.date_installed}} </li>
-                  <li> Longitude: {{well.longitude}} </li>
-                  <li> Latitude: {{well.latitude}} </li>
-              </ul>
-          </div>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 with-3d-shadow with-transitions">
+                <div id="chart">
+                    <svg></svg>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Last Update</th>
+                            <th>Number of Uses</th>
+                            <th>Overall average usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for well in wells %}
+                        <tr>
+                            <td scope="row">{{ well.last_update }}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="drop_header">
+                    <h3> Water Test results <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i></h3>
+                </div>
+                <div class="drop_content">
+                    <div class="card card-block">
+                        <table id="test-result">
+                            {% if water_tests %}
+                            <thead id="test_head">
+                                <tr>
+                                    <th id="test_h">Date Tested</th>
+                                    <th id="test_h">pH</th>
+                                    <th id="test_h">Turbidity</th>
+                                    <th id="test_h">True Color</th>
+                                    <th id="test_h">conductivity</th>
+                                    <th id="test_h">temperature</th>
+                                    <th id="test_h">total iron</th>
+                                    <th id="test_h">calcium</th>
+                                    <th id="test_h">magnesium</th>
+                                    <th id="test_h">chloride</th>
+                                    <th id="test_h">sulphater</th>
+                                    <th id="test_h">suspended solids</th>
+                                    <th id="test_h">total dissolved solids</th>
+                                    <th id="test_h">total solids</th>
+                                    <th id="test_h">total alkalinity </th>
+                                    <th id="test_h">total hardness</th>
+                                    <th id="test_h">calcium hardness</th>
+                                    <th id="test_h">magnesium hardness</th>
+                                    <th id="test_h">copper</th>
+                                    <th id="test_h">nitrite nitrogen</th>
+                                    <th id="test_h">nitrate nitrogen</th>
+                                    <th id="test_h"> fluoride </th>
+                                    <th id="test_h">MPN index</th>
+                                    <th id="test_h">ammonia nitrogen</th>
+                                    <th id="test_h">manganese</th>
+                                    <th id="test_h">aluminum</th>
+                                </tr>
+                            </thead>
+                            <tbody id="test_body">
 
-          <div id= "chart" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-4 col-xl-4.5 with-3d-shadow with-transitions">
-              <svg></svg>
-          </div>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.date}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.pH}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.turbidity_ntu}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.app_true_colour_hz}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.conductivity_uscm}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.temperature_c}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.total_iron}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.calcium}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.magnesium}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.chloride}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.sulphate}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.suspended_solids}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.total_dissolved_solids}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.total_solids}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.total_alkalinity}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.total_hardness}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.calcium_hardness}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.magnesium_hardness}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.copper}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.nitrite_nitrogen}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.nitrate_nitrogen}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.fluoride}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.mpn_index_tc_per_deciliter}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.ammonia_nitrogen}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.manganese}}</td>{% endfor %}
+                                </tr>
+                                <tr>
+                                    {% for test in water_tests %}
+                                    <td>{{test.aluminum}}</td>{% endfor %}
+                                </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
 
-          <div id= "well_map" class="col-xs-12 col-sm-6 col-md-4.5 col-lg-5 col-xl-4.5">
-              Well map will go here
-          </div>
-          </div>
-    <div class="row">
-      <div id= "well_info" class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-    <p>
-    <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      Water Test results
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-block">
-      <table>
-        {% if water_tests %}
-      <thead id="test_head">
-        <tr>
-          <th id="test_h">Date Tested</th>
-          <th id="test_h">pH</th>
-          <th id="test_h">Turbidity</th>
-          <th id="test_h">True Color</th>
-          <th id="test_h">conductivity</th>
-          <th id="test_h">temperature</th>
-          <th id="test_h">total iron</th>
-          <th id="test_h"> calcium </th>
-          <th id="test_h">magnesium</th>
-          <th id="test_h">chloride</th>
-          <th id="test_h">sulphater</th>
-          <th id="test_h">suspended solids</th>
-          <th id="test_h">total dissolved solids</th>
-          <th id="test_h">total solids</th>
-          <th id="test_h">total alkalinity </th>
-          <th id="test_h">total hardness</th>
-          <th id="test_h">calcium hardness</th>
-          <th id="test_h">magnesium hardness</th>
-          <th id="test_h">copper</th>
-          <th id="test_h">nitrite nitrogen</th>
-          <th id="test_h">nitrate nitrogen</th>
-          <th id="test_h"> fluoride </th>
-          <th id="test_h">MPN index</th>
-          <th id="test_h">ammonia nitrogen</th>
-          <th id="test_h">manganese</th>
-          <th id="test_h">aluminum</th>
-        </tr>
-      </thead>
-      <tbody id="test_body">
+              </div>
 
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.date}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.pH}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.turbidity_ntu}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.app_true_colour_hz}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.conductivity_uscm}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.temperature_c}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.total_iron}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.calcium}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.magnesium}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.chloride}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.sulphate}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.suspended_solids}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.total_dissolved_solids}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.total_solids}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.total_alkalinity}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.total_hardness}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.calcium_hardness}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.magnesium_hardness}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.copper}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.nitrite_nitrogen}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.nitrate_nitrogen}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.fluoride}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.mpn_index_tc_per_deciliter}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.ammonia_nitrogen}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.manganese}}</td>{% endfor %}
-        </tr>
-        <tr>
-          {% for test in water_tests %}
-          <td>{{test.aluminum}}</td>{% endfor %}
-        </tr>
-        {% endif %}
-      </tbody>
-    </table>
-  </div>
-</div>
+                <div class="drop_header">
+                <h3> Notes <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i></h3>
+              </div>
+              <div class="drop_content">
+                {% for note in notes %}
+                <div class="card card-outline-secondary text-xs-center">
+                    <div class="card-block">
+                        <blockquote class="card-blockquote">
+                            <h3 class="card-title"> {{note.title}}</h3>
+                            <p>{{note.text}}</p>
+                            <footer>{{note.created}} <cite title="Source Title">Source Title</cite></footer>
+                        </blockquote>
+                    </div>
+                </div>{% endfor %}
+              </div>
+
+          </div>
+        </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-3"></div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-    <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Last Update</th>
-        <th>Number of Uses</th>
-        <th> Overall average usage</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for well in wells %}
-      <tr>
-        <td scope="row">{{ well.last_update }}</td>
-        <td></td>
-        <td></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-3"></div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <h2> Notes: </h2>
-    {% for note in notes %}
-    <div class="card card-outline-secondary text-xs-center">
-      <div class="card-block">
-        <blockquote class="card-blockquote">
-          <h3 class="card-title"> {{note.title}}</h3>
-          <p>{{note.text}}</p>
-          <footer>{{note.created}} <cite title="Source Title">Source Title</cite></footer>
-        </blockquote>
-      </div>
-    </div>{% endfor %}
-  </div>
-
-</div>
+    </div>
     </div>
 </body>
-{% endblock %}
-{% block scripts %}
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0xaWJqzGe98gvXk-mtPZjCEWunLYZuqQ&callback=initMap" async defer></script>
-  <script src="https://d3js.org/d3.v3.min.js"></script>
-  <script src="{% static 'js/nv.d3.js' %}"></script>
-  <script src="{% static 'js/graph.js' %}"></script>
+
+{% endblock %} {% block scripts %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0xaWJqzGe98gvXk-mtPZjCEWunLYZuqQ&callback=initMap" async defer></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="{% static 'js/nv.d3.js' %}"></script>
+<script src="{% static 'js/graph.js' %}"></script>
+<script src="{% static 'js/well_detail.js' %}"></script>
 {% endblock %}

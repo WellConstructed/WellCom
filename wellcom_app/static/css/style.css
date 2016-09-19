@@ -80,18 +80,15 @@ Body
   width: auto;
 }
 
-h2 {
-  padding-top: 20px;
-}
 
-h1 {
+h1, h2, h3 {
   font-family: 'Roboto', sans-serif;
   margin-top: 40px;
   margin-bottom: 30px;
   color: #369FF4
 }
 
-p {
+p, li {
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
 }
@@ -133,10 +130,6 @@ body {
   float: right;
 }
 
-.row {
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
 
 .card {
   margin: 20px;
@@ -173,4 +166,26 @@ Page: About Us
   display: block;
   width: 100%;
   padding: 5%;
+
+
+
+/***************************************************
+well detail
+***************************************************/
+ul{
+  list-style-type: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  margin-left: -10%;
+  line-height: 20px;
+}
+
+#test_result {
+  text-align: center;
+}
+
+#chart svg {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 5%
 }

@@ -16,9 +16,10 @@
                     <li> Date Installed: {{well.date_installed}} </li>
                     <li> Longitude: {{well.longitude}} </li>
                     <li> Latitude: {{well.latitude}} </li>
-                    <li> Map here </li>
-
                 </ul>
+                <div id="well_map">
+                  Well
+                </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8 with-3d-shadow with-transitions">
                 <div id="chart">
@@ -216,9 +217,10 @@
 </body>
 
 {% endblock %} {% block scripts %}
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0xaWJqzGe98gvXk-mtPZjCEWunLYZuqQ&callback=initMap" async defer></script>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="{% static 'js/nv.d3.js' %}"></script>
 <script src="{% static 'js/graph.js' %}"></script>
 <script src="{% static 'js/well_detail.js' %}"></script>
+<script src="{% static 'js/well_map.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0xaWJqzGe98gvXk-mtPZjCEWunLYZuqQ&callback=initMap" async defer></script>
 {% endblock %}

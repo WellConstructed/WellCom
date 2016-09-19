@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceInput
+from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput
 
 
 class NoteSerializer(serializers.ModelSerializer):
@@ -51,15 +51,15 @@ class WellSerializer(serializers.ModelSerializer):
                   'device_data_set', 'usage_set', 'water_test_set')
 
 
-class DeviceInputSerializer(serializers.ModelSerializer):
+class DeviceOutputSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = DeviceInput
+        model = DeviceOutput
         fields = ('id', 'well', 'batt_voltage_mv', 'batt_percent_charged',
                   'adc_voltage_mv', 'start_time', 'end_time', 'temp_readings_c'
                   )
 
-    
+
 class TestSerializer(serializers.ModelSerializer):
 
     class Meta:

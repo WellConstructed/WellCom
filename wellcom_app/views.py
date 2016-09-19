@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from .serializers import (WellSerializer, NoteSerializer, DeviceDataSerializer,
-                          DeviceInputSerializer, UsageSerializer,
+                          DeviceOutputSerializer, UsageSerializer,
                           WaterTestSerializer, TestSerializer)
 from django.views import generic
 from rest_framework import viewsets, generics
-from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceInput
+from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput
 
 
 class WellViewSet(viewsets.ModelViewSet):
@@ -37,9 +37,9 @@ class TestViewSet(viewsets.ModelViewSet):
     serializer_class = TestSerializer
 
 
-class DeviceInputViewSet(viewsets.ModelViewSet):
-    queryset = DeviceInput.objects.all()
-    serializer_class = DeviceInputSerializer
+class DeviceOutputViewSet(viewsets.ModelViewSet):
+    queryset = DeviceOutput.objects.all()
+    serializer_class = DeviceOutputSerializer
 
 
 def about_us(request):

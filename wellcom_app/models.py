@@ -96,11 +96,15 @@ class Test(models.Model):
     timestamp = models.DateTimeField()
 
 
-class DeviceInput(models.Model):
+class DeviceOutput(models.Model):
     well = models.ForeignKey(Well)
     batt_voltage_mv = models.IntegerField(default=-1)
     batt_percent_charged = models.IntegerField(default=-1)
     adc_voltage_mv = models.IntegerField(default=-1)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+    # If Arduino NTP Time sync fails, upload_time and reading_interval_s
+    # provide a method to approximate timestamps
+    upload_time = models.DateTimeField(auto_now_add=True)
+    reading_interval_s = models.IntegerField()
     temp_readings_c = models.TextField()

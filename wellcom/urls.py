@@ -9,7 +9,7 @@ router.register(r'device_data', views.DeviceDataViewSet)
 router.register(r'usage', views.UsageViewSet)
 router.register(r'water_test', views.WaterTestViewSet)
 router.register(r'well', views.WellViewSet)
-router.register(r'device_input', views.DeviceInputViewSet)
+router.register(r'device_output', views.DeviceOutputViewSet)
 router.register(r'test', views.TestViewSet)
 
 urlpatterns = [

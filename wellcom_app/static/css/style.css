@@ -91,7 +91,7 @@ h1 {
   color: #369FF4
 }
 
-p {
+p, li {
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
 }
@@ -145,4 +145,25 @@ body {
   height: 630px;
   width: 100%;
   /*TODO: Make these % of the div, so it adjusts based on user screen size */
+}
+
+/***************************************************
+About Us
+***************************************************/
+#carousel {
+  margin-top: -45px;
+}
+
+/***************************************************
+well detail
+***************************************************/
+ul{
+  list-style-type: none;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  margin-left: -10%;
+}
+
+table {
+  text-align: center;
 }

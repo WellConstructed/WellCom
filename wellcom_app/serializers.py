@@ -56,7 +56,8 @@ class DeviceOutputSerializer(serializers.ModelSerializer):
     class Meta:
         model = DeviceOutput
         fields = ('id', 'well', 'batt_voltage_mv', 'batt_percent_charged',
-                  'adc_voltage_mv', 'start_time', 'end_time', 'temp_readings_c'
+                  'adc_voltage_mv', 'start_time', 'end_time',
+                  'temp_readings_c', 'reading_interval_s'
                   )
 
 

@@ -13,9 +13,7 @@
             <div id="well_info" class="col-xs-12 col-sm-12 col-md-4">
                 <h1>{{well.name}}</h1>
                 <ul>
-                    <li> Date Installed: {{well.date_installed}} </li>
-                    <li> Longitude: {{well.longitude}} </li>
-                    <li> Latitude: {{well.latitude}} </li>
+                    <li> Flowing Since: {{well.date_installed}} </li>
                 </ul>
                 <div id="well_map">
                   Well
@@ -44,7 +42,7 @@
                     </tbody>
                 </table>
                 <div class="drop_header">
-                    <h3> Water Test results <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i></h3>
+                    <h3> Water Test Results <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i></h3>
                 </div>
                 <div class="drop_content">
                     <div class="card card-block">
@@ -194,7 +192,7 @@
               </div>
 
                 <div class="drop_header">
-                <h3> Notes <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i></h3>
+                <h3> Updates <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i></h3>
               </div>
               <div class="drop_content">
                 {% for note in notes %}

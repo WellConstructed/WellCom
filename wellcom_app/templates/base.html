@@ -27,17 +27,20 @@
           </a>
 
       <ul class="pull-xs-right">
+        <li class="nav-item">
+          <a href="{% url 'about_us' %}">About</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"> Wells </a>
           <div class="dropdown-menu" aria-labelledby="Preview">
             {% for well in wells %}
             <a class="dropdown-item" href="{% url 'well_detail' well.pk %}">{{ well.name }}</a>
             {% endfor %}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'wells' %}"> All Wells </a>
           </div>
         </li>
-        <li class="nav-item">
-          <a href="{% url 'about_us' %}">About Us</a>
-        </li>
+
       </ul>
 
   </div>

@@ -28,8 +28,9 @@ nav div.container {
 
 #wellcom {
   display: inline-block;
+  font-family: 'Roboto', sans-serif;
   height: 2em;
-  font-weight: 100;
+  font-weight: 300;
   font-size: -webkit-xxx-large;
 }
 

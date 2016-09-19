@@ -118,6 +118,7 @@ body {
 
 .footer {
   text-align: center;
+  clear: both;
 }
 
 #test_head {
@@ -145,4 +146,31 @@ body {
   height: 630px;
   width: 100%;
   /*TODO: Make these % of the div, so it adjusts based on user screen size */
+}
+
+
+
+/***************************************************
+Page: About Us
+***************************************************/
+
+#what, #who, #how {
+  display: block;
+  text-align: justify;
+  width: 50%;
+  padding: 5%;
+  padding-top: 0;
+  clear: both;
+}
+
+#whatpic, #whopic, #howpic {
+  width: 50%;
+  padding: 2.5%;
+  padding-top: 0;
+}
+
+#whatpic img, #whopic img, #howpic img {
+  display: block;
+  width: 100%;
+  padding: 5%;
 }

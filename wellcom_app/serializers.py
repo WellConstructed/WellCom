@@ -55,10 +55,11 @@ class DeviceInputSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DeviceInput
-        fields = ('id', 'well', 'time_int_seconds', 'temp_readings',
-                  'time_added')
+        fields = ('id', 'well', 'batt_voltage_mv', 'batt_percent_charged',
+                  'adc_voltage_mv', 'start_time', 'end_time', 'temp_readings_c'
+                  )
 
-
+    
 class TestSerializer(serializers.ModelSerializer):
 
     class Meta:

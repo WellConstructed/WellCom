@@ -98,9 +98,9 @@ class Test(models.Model):
 
 class DeviceInput(models.Model):
     well = models.ForeignKey(Well)
-    batt_voltage_mv = models.IntegerField()
-    batt_percent_charged = models.IntegerField()
-    adc_voltage_mv = models.IntegerField()
+    batt_voltage_mv = models.IntegerField(default=-1)
+    batt_percent_charged = models.IntegerField(default=-1)
+    adc_voltage_mv = models.IntegerField(default=-1)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     temp_readings_c = models.TextField()

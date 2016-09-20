@@ -133,10 +133,16 @@ body {
 
 #test_head #test_h {
   display: block;
+  font-weight: bold;
+  padding: 0 10px 0 0;
 }
 
 #test_body {
   float: right;
+}
+
+#test_body td {
+  padding: 0 10px;
 }
 
 .card {
@@ -158,7 +164,7 @@ body {
   opacity: 0.6;
 }
 
-.table {
+table {
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -173,6 +179,12 @@ div.dataTables_length label, div.dataTables_filter label, div.dataTables_info {
 .clickable-row, .drop_header {
   cursor: pointer;
 }
+
+.card {
+  background-color: #FAFAFA;
+}
+
+
 /***************************************************
 Page: About Us
 ***************************************************/
@@ -236,4 +248,9 @@ ul {
 
 .fa-chevron-right.open {
   transform: rotate(90deg);
+}
+
+tfoot {
+  font-family: 'Open Sans', sans-serif;
+  color: #369FF4;
 }

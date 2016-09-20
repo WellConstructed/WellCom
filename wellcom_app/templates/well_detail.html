@@ -44,39 +44,40 @@
                     <h3> Water Test Results <i class="fa fa-chevron-right fa-fw" aria-hidden="true"></i></h3>
                 </div>
                 <div class="drop_content">
-                    <div class="card card-block">
+                    <div id="test_table" class="card card-block">
                         <table id="test-result">
                             {% if water_tests %}
                             <thead id="test_head">
                                 <tr>
                                     <th id="test_h">Date Tested</th>
                                     <th id="test_h">pH</th>
-                                    <th id="test_h">Turbidity</th>
-                                    <th id="test_h">True Color</th>
-                                    <th id="test_h">conductivity</th>
-                                    <th id="test_h">temperature</th>
-                                    <th id="test_h">total iron</th>
-                                    <th id="test_h">calcium</th>
-                                    <th id="test_h">magnesium</th>
-                                    <th id="test_h">chloride</th>
-                                    <th id="test_h">sulphater</th>
-                                    <th id="test_h">suspended solids</th>
-                                    <th id="test_h">total dissolved solids</th>
-                                    <th id="test_h">total solids</th>
-                                    <th id="test_h">total alkalinity </th>
-                                    <th id="test_h">total hardness</th>
-                                    <th id="test_h">calcium hardness</th>
-                                    <th id="test_h">magnesium hardness</th>
-                                    <th id="test_h">copper</th>
-                                    <th id="test_h">nitrite nitrogen</th>
-                                    <th id="test_h">nitrate nitrogen</th>
-                                    <th id="test_h"> fluoride </th>
-                                    <th id="test_h">MPN index</th>
-                                    <th id="test_h">ammonia nitrogen</th>
-                                    <th id="test_h">manganese</th>
-                                    <th id="test_h">aluminum</th>
+                                    <th id="test_h">Turbidity (NTU)</th>
+                                    <th id="test_h">True Color (Hz)</th>
+                                    <th id="test_h">Conductivity (Us/Cm)</th>
+                                    <th id="test_h">Temperature</th>
+                                    <th id="test_h">Total Iron</th>
+                                    <th id="test_h">Calcium</th>
+                                    <th id="test_h">Magnesium</th>
+                                    <th id="test_h">Chloride</th>
+                                    <th id="test_h">Sulphate</th>
+                                    <th id="test_h">Suspended Solids</th>
+                                    <th id="test_h">Total Dissolved Solids</th>
+                                    <th id="test_h">Total Solids</th>
+                                    <th id="test_h">Total Alkalinity </th>
+                                    <th id="test_h">Total Hardness</th>
+                                    <th id="test_h">Calcium hardness</th>
+                                    <th id="test_h">Magnesium Hardness</th>
+                                    <th id="test_h">Copper</th>
+                                    <th id="test_h">Nitrite Nitrogen</th>
+                                    <th id="test_h">Nitrate Nitrogen</th>
+                                    <th id="test_h">Fluoride</th>
+                                    <th id="test_h">MPN index (Total Coliform/100ml)</th>
+                                    <th id="test_h">Ammonia Nitrogen</th>
+                                    <th id="test_h">Manganese</th>
+                                    <th id="test_h">Aluminum</th>
                                 </tr>
                             </thead>
+
                             <tbody id="test_body">
 
                                 <tr>
@@ -185,6 +186,9 @@
                                 </tr>
                                 {% endif %}
                             </tbody>
+                            <tfoot>
+                              <th>units in mg/l unless otherwise stated</th>
+                            </tfoot>
                         </table>
                     </div>
 

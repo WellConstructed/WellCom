@@ -5,6 +5,7 @@ from .serializers import (WellSerializer, NoteSerializer, DeviceDataSerializer,
 from django.views import generic
 from rest_framework import viewsets, generics
 from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput
+from django.views.decorators.cache import cache_page
 
 
 class WellViewSet(viewsets.ModelViewSet):
@@ -42,6 +43,7 @@ class DeviceOutputViewSet(viewsets.ModelViewSet):
     serializer_class = DeviceOutputSerializer
 
 
+@cache_page(86400)
 def about_us(request):
     wells = Well.objects.all()
     context = {
@@ -50,6 +52,7 @@ def about_us(request):
     return render(request, 'about_us.html', context)
 
 
+@cache_page(86400)
 def wells(request):
     wells = Well.objects.all()
     context = {
@@ -58,6 +61,7 @@ def wells(request):
     return render(request, 'wells.html', context)
 
 
+@cache_page(86400)
 def well_detail(request, well_id):
     wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
@@ -84,7 +88,3 @@ def well_detail(request, well_id):
         'notes': notes,
     }
     return render(request, 'well_detail.html', context)
-
-
-def graph_temp(request):
-    return render(request, 'graph_temp.html')

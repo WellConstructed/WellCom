@@ -7,3 +7,12 @@ $(document).ready(function() {
         $(this).toggleClass('exp');
     });
 });
+
+
+$('#water_test').click( function(){
+    $(this).find('i').toggleClass('fa fa-chevron-right fa-fw').toggleClass('fa fa-chevron-down fa-fw');
+});
+
+$('#updates').click( function(){
+    $(this).find('i').toggleClass('fa fa-chevron-right fa-fw').toggleClass('fa fa-chevron-down fa-fw');
+});

@@ -2,10 +2,11 @@
 {% load staticfiles %}
 <title>
 {% block title %}WellCom{% endblock %}
+{% block header %}<link href="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet" />{% endblock %}
 </title>
 
 {% block body %}
-{% block header %}{% endblock %}
+
 <body>
 
   <a class="pull-xs-left" href="#all" id="help">
@@ -28,7 +29,7 @@
 
   <div id="all">
   <h1> All Wells </h1></div>
-  <table class="table table-hover">
+  <table class="table table-hover" id="all_well_data">
   <thead>
     <tr>
       <th>Name</th>
@@ -42,7 +43,7 @@
   </thead>
   <tbody>
     {% for well in wells %}
-    <tr>
+    <tr class="clickable-row" data-href="{% url 'well_detail' well.pk %}">
       <td scope="row">{{ well.name }}</td>
       <td>{{well.country}}</td>
       <td>{{well.date_installed}}</td>
@@ -59,8 +60,10 @@
 {% block scripts %}
 <script src="{% static 'js/maps.js' %}"></script>
 <script src="{% static 'js/tooltip.js' %}"></script>
+<script src="{% static 'js/wells.js' %}"></script>
+<script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0xaWJqzGe98gvXk-mtPZjCEWunLYZuqQ&callback=initMap" async defer></script>
-<!-- <script src="https://maps.googleapis.com/maps/api/js?&callback=initMap" async defer></script> -->
 
 </body>
 {% endblock %}

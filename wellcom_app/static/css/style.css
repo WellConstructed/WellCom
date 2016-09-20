@@ -83,8 +83,18 @@ Body
 
 h1, h2, h3 {
   font-family: 'Roboto', sans-serif;
-  margin-bottom: 30px;
+  margin-bottom: 1%;
   color: #369FF4
+}
+
+h4 {
+  font-family: 'Roboto', sans-serif;
+  color: #369FF4;
+}
+
+h5 {
+  font-family: 'Open Sans', sans-serif;
+  color: #555555;
 }
 
 p, li {
@@ -136,8 +146,8 @@ body {
 #all_well_map {
   height: 630px;
   width: 100%;
-  margin-top: -10px;
-  margin-bottom: 35px;
+  margin-top: -2%;
+  margin-bottom: 8%;
   /*TODO: Make these % of the div, so it adjusts based on user screen size */
 }
 
@@ -148,6 +158,21 @@ body {
   opacity: 0.6;
 }
 
+.table {
+  font-family: 'Open Sans', sans-serif;
+}
+
+div.dataTables_length label, div.dataTables_filter label, div.dataTables_info {
+  display: none;
+}
+
+.pagination>li:first-child>a, .pagination>li:first-child>span, .pagination>.active>a, .pagination>li:last-child>a {
+  display: none;
+}
+
+.clickable-row, .drop_header {
+  cursor: pointer;
+}
 /***************************************************
 Page: About Us
 ***************************************************/
@@ -196,7 +221,11 @@ ul {
 }
 
 #well_map {
-  margin-top: 40px;
-  width: 80%;
-  height: 200px;
+  margin-top: 16%;
+  width: 88%;
+  height: 230px;
+}
+
+#well_info h1 {
+  margin-top: 0%;
 }

@@ -51,9 +51,9 @@ $.ajax({
 
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
-              infowindow.setContent('<strong>' + $wellData[i].name + '</strong>'
-                  + '<p> latitude:  ' + $wellData[i].latitude + '</p>' +
-                    '<p> longitude:  ' + $wellData[i].longitude + '</p>');
+              infowindow.setContent('<h4>' + $wellData[i].name + '</h4>'
+                  + '<h5> latitude:  ' + $wellData[i].latitude + '</h5>' +
+                    '<h5> longitude:  ' + $wellData[i].longitude + '</h5>');
               infowindow.open(map, marker);
     }
   })(marker, i));

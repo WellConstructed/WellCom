@@ -4,13 +4,14 @@ $(document).ready(function() {
         var $next = $(this).next(".drop_content");
         $(".drop_content").not($next).slideUp();
         $next.slideToggle(300);
-      div.addEventListener('click', function(){
-        if(open){
-          icon.className = 'fa fa-arrow-down';
-        } else{
-          icon.className = 'fa fa-arrow-down open';
-        }
-        open = !open;
     });
 });
+
+
+$('#water_test').click( function(){
+    $(this).find('i').toggleClass('fa fa-chevron-right fa-fw').toggleClass('fa fa-chevron-down fa-fw');
+});
+
+$('#updates').click( function(){
+    $(this).find('i').toggleClass('fa fa-chevron-right fa-fw').toggleClass('fa fa-chevron-down fa-fw');
 });

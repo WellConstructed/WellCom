@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
-
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from datetime import datetime, timedelta
 
 class Well(models.Model):
     name = models.CharField(max_length=200)
@@ -47,11 +49,7 @@ class DeviceData(models.Model):
 class Usage(models.Model):
     # TODO: Write functions to generate instances of this model from a list of DeviceData objects
     well = models.ForeignKey(Well)
-    date = models.DateField()
-    usage_count = models.IntegerField()
-
-    def __str__(self):
-        return self.title
+    timestamp = models.DateTimeField()
 
 
 class WaterTest(models.Model):
@@ -108,3 +106,47 @@ class DeviceOutput(models.Model):
     upload_time = models.DateTimeField(auto_now_add=True)
     reading_interval_s = models.IntegerField()
     temp_readings_c = models.TextField()
+
+
+@receiver(post_save, sender=DeviceOutput)
+def create_device_data(sender, instance, **kwargs):
+    if (instance.start_time and instance.end_time):
+        temp_readings = instance.temp_readings_c.split('|')
+        time_ints = len(temp_readings) - 1
+        time_passed = instance.end_time - instance.start_time
+        print("Num Readings: ", len(temp_readings))
+        print("Time intervals: ", time_ints)
+        print("Time passed: ", time_passed)
+        print("Time passed type: ", type(time_passed))
+        print("Start time type: ", type(instance.start_time))
+
+        for i in range(len(temp_readings)):
+
+            print('reading ', i, temp_readings[i])
+            ts = instance.start_time + (time_passed * i)
+            reading = float(temp_readings[i])
+            device_data = DeviceData(well=instance.well, timestamp=ts,
+                                     temperature_c=reading)
+            device_data.save()
+    else:
+        print('Did not collect both start and end times from Arduino')
+        # write function to create data based on
+
+
+#     {"well":23,
+# "reading_interval_s":3,
+# "adc_voltage_mv":1708,
+# "batt_voltage_mv":4197,
+# "batt_percent_charged":99,
+# "start_time":"2016-09-19T22:34:17",
+# "temp_readings_c":"10.0|20.0|30.0|40.0",
+# "end_time":"2016-09-19T17:57:49"}
+
+
+    # Create Wells
+    # test_well = Well(name="Test Well 2", latitude=36.993078,
+    #                  longitude=-79.904689, country="United States",
+    #                  date_installed="2016-06-20", last_update=timezone.now(),
+    #                  estimated_users=1100, cost_usd=5000,
+    #                  contractor="Test Contractor 2", flow_rate_lpm=160)
+    # test_well.save()

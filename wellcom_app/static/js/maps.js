@@ -3,21 +3,6 @@ var $wellData = {};
 
 var map;
 function initMap() {
-    map = new google.maps.Map(document.getElementById('all_well_map'), {
-      center: {lat: 36.9930780, lng: -79.9046890},
-      zoom: 8,
-      scrollwheel: false,
-      styles: [
-           {
-             featureType: 'all',
-             stylers: [
-               { saturation: -70 }
-             ]
-           }
-         ]
-    });
-}
-
 
 $.ajax({
   type: 'GET',
@@ -28,6 +13,21 @@ $.ajax({
     $wellData = data.results;
     console.log($wellData);
 
+    var  map = new google.maps.Map(document.getElementById('all_well_map'), {
+        center: {lat: 36.9930780, lng: -79.9046890},
+        zoom: 8,
+        scrollwheel: false,
+        styles: [
+             {
+               featureType: 'all',
+               stylers: [
+                 { saturation: -70 }
+               ]
+             }
+           ]
+      });
+
+      var bounds = new google.maps.LatLngBounds();
       var infowindow = new google.maps.InfoWindow();
 
       var image = {
@@ -46,6 +46,9 @@ $.ajax({
               map: map,
               icon: image,
           });
+
+          bounds.extend(marker.position);
+
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
               infowindow.setContent('<strong>' + $wellData[i].name + '</strong>'
@@ -54,7 +57,7 @@ $.ajax({
               infowindow.open(map, marker);
     }
   })(marker, i));
-
+    map.fitBounds(bounds);
       }
 
   },
@@ -64,3 +67,4 @@ $.ajax({
   }
 
 });
+}

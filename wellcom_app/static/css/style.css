@@ -53,7 +53,7 @@ nav a:hover, a:focus {
   width: auto;
 }
 
-a.pull-xs-left {
+nav a.pull-xs-left {
   display: block;
   padding: 2% 0;
 }
@@ -61,13 +61,12 @@ a.pull-xs-left {
 ul.pull-xs-right {
   padding: 2% 0;
   margin: auto 0;
-  padding
 }
 
 ul.pull-xs-right>li {
   display: inline-block;
   list-style: none;
-  padding: 0 5px;
+  padding: 0 8px;
 }
 
 
@@ -130,7 +129,6 @@ body {
   float: right;
 }
 
-
 .card {
   margin: 20px;
 }
@@ -138,10 +136,17 @@ body {
 #all_well_map {
   height: 630px;
   width: 100%;
+  margin-top: -10px;
+  margin-bottom: 35px;
   /*TODO: Make these % of the div, so it adjusts based on user screen size */
 }
 
-
+#help.pull-xs-left, #help.pull-xs-right {
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: 40%;
+  opacity: 0.6;
+}
 
 /***************************************************
 Page: About Us

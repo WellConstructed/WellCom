@@ -158,10 +158,9 @@ body {
   /*TODO: Make these % of the div, so it adjusts based on user screen size */
 }
 
-#help.pull-xs-left, #help.pull-xs-right {
+#help.pull-xs-left, #helpbtn.pull-xs-right {
   margin-left: 4%;
   margin-right: 4%;
-  margin-top: 40%;
   opacity: 0.6;
 }
 
@@ -183,6 +182,18 @@ div.dataTables_length label, div.dataTables_filter label, div.dataTables_info {
 
 .card {
   background-color: #FAFAFA;
+}
+
+div.fixed {
+  position: fixed;
+  margin-left: 15px;
+  opacity: 0.6;
+  margin-top: 41%;
+}
+
+#helpbtn.pull-xs-right {
+  margin-right: 4%;
+  opacity: 0.4;
 }
 
 

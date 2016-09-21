@@ -43,7 +43,7 @@ class DeviceOutputViewSet(viewsets.ModelViewSet):
     serializer_class = DeviceOutputSerializer
 
 
-@cache_page(86400)
+# @cache_page(86400)
 def about_us(request):
     wells = Well.objects.all()
     context = {
@@ -52,7 +52,7 @@ def about_us(request):
     return render(request, 'about_us.html', context)
 
 
-@cache_page(86400)
+# @cache_page(86400)
 def wells(request):
     wells = Well.objects.all()
     context = {
@@ -61,7 +61,7 @@ def wells(request):
     return render(request, 'wells.html', context)
 
 
-@cache_page(86400)
+# @cache_page(86400)
 def well_detail(request, well_id):
     wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
@@ -69,17 +69,14 @@ def well_detail(request, well_id):
         water_tests = well.watertest_set.all()
     except:
         water_tests = None
-        print("No tests for this well")
     try:
         device_data = well.devicedata_set.all()
     except:
         device_data = None
-        print("No tests for this well")
     try:
         notes = well.note_set.all()
     except:
         notes = None
-        print("No tests for this well")
     context = {
         'wells': wells,
         'well': well,

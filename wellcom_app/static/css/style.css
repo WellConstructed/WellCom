@@ -69,7 +69,10 @@ ul.pull-xs-right>li {
   padding: 0 8px;
 }
 
-
+.dropdown-menu .dropdown-item {
+  width: 220px;
+  white-space: normal;
+}
 
 /***************************************************
 Body
@@ -133,14 +136,21 @@ body {
 
 #test_head #test_h {
   display: block;
+  font-weight: bold;
+  padding: 0 10px 0 0;
 }
 
 #test_body {
   float: right;
 }
 
-.card {
-  margin: 20px;
+#test_body td {
+  padding: 0 10px;
+  text-align: center;
+}
+
+#test_body #acc {
+  color: #CB0000;
 }
 
 #all_well_map {
@@ -151,14 +161,13 @@ body {
   /*TODO: Make these % of the div, so it adjusts based on user screen size */
 }
 
-#help.pull-xs-left, #help.pull-xs-right {
+#help.pull-xs-left, #helpbtn.pull-xs-right {
   margin-left: 4%;
   margin-right: 4%;
-  margin-top: 40%;
   opacity: 0.6;
 }
 
-.table {
+table {
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -173,6 +182,18 @@ div.dataTables_length label, div.dataTables_filter label, div.dataTables_info {
 .clickable-row, .drop_header {
   cursor: pointer;
 }
+
+.card {
+  background-color: #FAFAFA;
+  max-width: 900px;
+}
+
+#help.pull-xs-left, #helpbtn.pull-xs-right {
+  margin-left: 4%;
+  margin-top: 41%;
+}
+
+
 /***************************************************
 Page: About Us
 ***************************************************/
@@ -228,4 +249,17 @@ ul {
 
 #well_info h1 {
   margin-top: 0%;
+}
+
+.fa-chevron-right {
+  transform: rotate(0deg);
+}
+
+.fa-chevron-right.open {
+  transform: rotate(90deg);
+}
+
+tfoot {
+  font-family: 'Open Sans', sans-serif;
+  color: #369FF4;
 }

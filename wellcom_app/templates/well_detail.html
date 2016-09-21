@@ -31,13 +31,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for well in wells %}
                         <tr>
-                            <td scope="row">{{ well.last_update }}</td>
+                            <td scope="row">{{well.last_update | date:"M d Y" }}</td>
                             <td></td>
                             <td></td>
                         </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
                 <div class="drop_header">

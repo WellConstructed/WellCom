@@ -83,11 +83,10 @@ Body
   width: auto;
 }
 
-
 h1, h2, h3 {
   font-family: 'Roboto', sans-serif;
   margin-bottom: 1%;
-  color: #369FF4
+  color: #369FF4;
 }
 
 h4 {
@@ -165,6 +164,10 @@ body {
   margin-left: 4%;
   margin-right: 4%;
   opacity: 0.6;
+}
+
+#help.pull-xs-left {
+  scroll-behavior: smooth;
 }
 
 table {

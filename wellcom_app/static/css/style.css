@@ -149,8 +149,8 @@ body {
   text-align: center;
 }
 
-.card {
-  margin: 20px;
+#test_body #acc {
+  color: #CB0000;
 }
 
 #all_well_map {
@@ -185,6 +185,7 @@ div.dataTables_length label, div.dataTables_filter label, div.dataTables_info {
 
 .card {
   background-color: #FAFAFA;
+  max-width: 900px;
 }
 
 #help.pull-xs-left, #helpbtn.pull-xs-right {

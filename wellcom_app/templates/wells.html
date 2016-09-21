@@ -42,9 +42,9 @@
     <tr class="clickable-row" data-href="{% url 'well_detail' well.pk %}">
       <td scope="row">{{ well.name }}</td>
       <td>{{well.country}}</td>
-      <td>{{well.date_installed}}</td>
+      <td>{{well.date_installed | date:"M d Y" }}</td>
       <td>{{well.depth_m}}</td>
-      <td>{{well.last_update}}</td>
+      <td>{{well.last_update | date:"M d Y" }}</td>
       <td></td>
       <td>{{well.estimated_users}}</td>
     </tr>

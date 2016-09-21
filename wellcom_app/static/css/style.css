@@ -69,7 +69,10 @@ ul.pull-xs-right>li {
   padding: 0 8px;
 }
 
-
+.dropdown-menu .dropdown-item {
+  width: 220px;
+  white-space: normal;
+}
 
 /***************************************************
 Body
@@ -184,16 +187,9 @@ div.dataTables_length label, div.dataTables_filter label, div.dataTables_info {
   background-color: #FAFAFA;
 }
 
-div.fixed {
-  position: fixed;
-  margin-left: 15px;
-  opacity: 0.6;
+#help.pull-xs-left, #helpbtn.pull-xs-right {
+  margin-left: 4%;
   margin-top: 41%;
-}
-
-#helpbtn.pull-xs-right {
-  margin-right: 4%;
-  opacity: 0.4;
 }
 
 

@@ -8,9 +8,11 @@ $(document).ready(function($) {
     });
 });
 
-$(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-       console.log("bottom!");
-       $(document).find("i").toggleClass("fa fa-arrow-circle-down fa-2x").toggleClass("fa fa-arrow-circle-up fa-2x");
-   }
-});
+
+$(window).scroll(function(){
+    $(".fixed").css("opacity", 0.6 - $(window).scrollTop() / 250);
+  });
+
+$(window).scroll(function(){
+    $(".fix").css("opacity", 0.6 - $(window).scrollTop() / 250);
+  });

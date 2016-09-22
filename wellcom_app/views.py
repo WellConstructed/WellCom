@@ -85,3 +85,13 @@ def well_detail(request, well_id):
         'notes': notes,
     }
     return render(request, 'well_detail.html', context)
+
+
+def test_device_view(request):
+    device_data = DeviceData.objects.all()
+    # hourly_events = device_data.objects.filter(Timestamp_range=(start ))
+
+    context = {
+        'device_data': device_data,
+    }
+    return render(request, 'test_device_data.html', context)

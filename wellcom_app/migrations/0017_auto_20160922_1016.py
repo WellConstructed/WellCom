@@ -21,14 +21,15 @@ def add_hourly_usage(apps, schema_editor):
              {"id": 7, "pop": 0}]
 
     HourlyUsage = apps.get_model("wellcom_app", "HourlyUsage")
-    base = datetime.datetime.today()
+    cur = datetime.datetime.today()
     # date_list = [base - datetime.timedelta(hours=x) for x in range(0, 24)]
     for well in wells:
         for index in range(744):
-            cur = base - datetime.timedelta(hours=1)
+            cur -= datetime.timedelta(hours=1)
             pump_count = random.choice(range(*hours_daily[cur.hour]))
             cur = datetime.datetime(cur.year, cur.month, cur.day, cur.hour)
-            hourly_usage = HourlyUsage(well_id=well["id"], timestamp=cur.isoformat(),
+            hourly_usage = HourlyUsage(well_id=well["id"],
+                                       timestamp=cur.isoformat(),
                                        usage_count=pump_count * well["pop"])
             hourly_usage.save()
 

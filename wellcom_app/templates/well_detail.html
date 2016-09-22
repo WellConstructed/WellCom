@@ -8,15 +8,13 @@
 
 <body>
     <div class="container">
-        <div class="row">
-            <!-- <div id="well_info" class="col-xs-12 col-sm-12 col-md-12 col--12"> -->
+        <div class="row" id="well_title_row">
+            <div id="well_title" class="col-xs-12 col-sm-12 col-md-12">
                 <h1>{{well.name}}</h1>
-                <ul>
-                    <li> Flowing Since: {{well.date_installed}} </li>
-                </ul>
+                <p>Flowing Since: {{well.date_installed}}</p>
                 <div id="well_map">
                 </div>
-            <!-- </div> -->
+            </div>
         </div>
         <div class="row">
             <div id="well_info" class="col-xs-12 col-sm-12 col-md-4">

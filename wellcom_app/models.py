@@ -50,11 +50,7 @@ class DeviceData(models.Model):
 class Usage(models.Model):
     # TODO: Write functions to generate instances of this model from a list of DeviceData objects
     well = models.ForeignKey(Well)
-    date = models.DateField()
-    usage_count = models.IntegerField()
-
-    def __str__(self):
-        return self.title
+    timestamp = models.DateField()
 
 
 class WaterTest(models.Model):

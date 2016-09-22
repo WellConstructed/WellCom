@@ -20,7 +20,7 @@ class UsageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Usage
-        fields = ('id', 'date', 'usage_count')
+        fields = ('id', 'well', 'timestamp')
 
 
 class WaterTestSerializer(serializers.ModelSerializer):

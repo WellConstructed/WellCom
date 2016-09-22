@@ -50,7 +50,11 @@ class DeviceData(models.Model):
 class Usage(models.Model):
     # TODO: Write functions to generate instances of this model from a list of DeviceData objects
     well = models.ForeignKey(Well)
-    timestamp = models.DateTimeField()
+    date = models.DateField()
+    usage_count = models.IntegerField()
+
+    def __str__(self):
+        return self.title
 
 
 class WaterTest(models.Model):
@@ -58,33 +62,33 @@ class WaterTest(models.Model):
 
     well = models.ForeignKey(Well)
     date = models.DateField()
-    pH = models.DecimalField(max_digits=15, decimal_places=2)
-    turbidity_ntu = models.DecimalField(max_digits=15, decimal_places=2)
+    pH = models.DecimalField(max_digits=15, decimal_places=4)
+    turbidity_ntu = models.DecimalField(max_digits=15, decimal_places=4)
     app_true_colour_hz = models.IntegerField()
-    conductivity_uscm = models.DecimalField(max_digits=15, decimal_places=2)
+    conductivity_uscm = models.DecimalField(max_digits=15, decimal_places=4)
     temperature_c = models.DecimalField(max_digits=5, decimal_places=2)
-    total_iron = models.DecimalField(max_digits=15, decimal_places=2)
-    calcium = models.DecimalField(max_digits=15, decimal_places=2)
-    magnesium = models.DecimalField(max_digits=15, decimal_places=2)
-    chloride = models.DecimalField(max_digits=15, decimal_places=2)
-    sulphate = models.DecimalField(max_digits=15, decimal_places=2)
-    suspended_solids = models.DecimalField(max_digits=15, decimal_places=2)
+    total_iron = models.DecimalField(max_digits=15, decimal_places=4)
+    calcium = models.DecimalField(max_digits=15, decimal_places=4)
+    magnesium = models.DecimalField(max_digits=15, decimal_places=4)
+    chloride = models.DecimalField(max_digits=15, decimal_places=4)
+    sulphate = models.DecimalField(max_digits=15, decimal_places=4)
+    suspended_solids = models.DecimalField(max_digits=15, decimal_places=4)
     total_dissolved_solids = models.DecimalField(max_digits=15,
-                                                 decimal_places=2)
-    total_solids = models.DecimalField(max_digits=15, decimal_places=2)
-    total_alkalinity = models.DecimalField(max_digits=15, decimal_places=2)
-    total_hardness = models.DecimalField(max_digits=15, decimal_places=2)
-    calcium_hardness = models.DecimalField(max_digits=15, decimal_places=2)
-    magnesium_hardness = models.DecimalField(max_digits=15, decimal_places=2)
-    copper = models.DecimalField(max_digits=15, decimal_places=2)
-    nitrite_nitrogen = models.DecimalField(max_digits=15, decimal_places=2)
-    nitrate_nitrogen = models.DecimalField(max_digits=15, decimal_places=2)
-    fluoride = models.DecimalField(max_digits=15, decimal_places=2)
+                                                 decimal_places=4)
+    total_solids = models.DecimalField(max_digits=15, decimal_places=4)
+    total_alkalinity = models.DecimalField(max_digits=15, decimal_places=4)
+    total_hardness = models.DecimalField(max_digits=15, decimal_places=4)
+    calcium_hardness = models.DecimalField(max_digits=15, decimal_places=4)
+    magnesium_hardness = models.DecimalField(max_digits=15, decimal_places=4)
+    copper = models.DecimalField(max_digits=15, decimal_places=4)
+    nitrite_nitrogen = models.DecimalField(max_digits=15, decimal_places=4)
+    nitrate_nitrogen = models.DecimalField(max_digits=15, decimal_places=4)
+    fluoride = models.DecimalField(max_digits=15, decimal_places=4)
     mpn_index_tc_per_deciliter = models.DecimalField(max_digits=15,
-                                                     decimal_places=2)
-    ammonia_nitrogen = models.DecimalField(max_digits=15, decimal_places=2)
-    manganese = models.DecimalField(max_digits=15, decimal_places=2)
-    aluminum = models.DecimalField(max_digits=15, decimal_places=2)
+                                                     decimal_places=4)
+    ammonia_nitrogen = models.DecimalField(max_digits=15, decimal_places=4)
+    manganese = models.DecimalField(max_digits=15, decimal_places=4)
+    aluminum = models.DecimalField(max_digits=15, decimal_places=4)
 
     def __str__(self):
         return 'Well {} tested on {}'.format(self.well, self.date)
@@ -106,7 +110,9 @@ class DeviceOutput(models.Model):
     # provide a method to approximate timestamps
     upload_time = models.DateTimeField(auto_now_add=True)
     reading_interval_s = models.IntegerField()
-    temp_readings_c = models.TextField()
+
+    temp_readings_c = models.TextField() # TODO: make this an array field
+    # TODO: Look into json fields in Django
 
 
 @receiver(post_save, sender=DeviceOutput)

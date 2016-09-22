@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput
+from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput, HourlyUsage
 
 
 class NoteSerializer(serializers.ModelSerializer):
@@ -66,3 +66,9 @@ class TestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = ('id', 'text', 'timestamp')
+
+class HourlyUsageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = HourlyUsage
+        fields = ('id', 'well', 'timestamp', 'usage_count')

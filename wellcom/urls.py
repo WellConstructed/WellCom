@@ -11,6 +11,7 @@ router.register(r'water_test', views.WaterTestViewSet)
 router.register(r'well', views.WellViewSet)
 router.register(r'device_output', views.DeviceOutputViewSet)
 router.register(r'test', views.TestViewSet)
+router.register(r'hourly_usage', views.HourlyUsageViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from .serializers import (WellSerializer, NoteSerializer, DeviceDataSerializer,
                           DeviceOutputSerializer, UsageSerializer,
-                          WaterTestSerializer, TestSerializer)
+                          WaterTestSerializer, TestSerializer, HourlyUsageSerializer)
 from django.views import generic
 from rest_framework import viewsets, generics
-from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput
+from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput, HourlyUsage
 from django.views.decorators.cache import cache_page
 
 
@@ -41,6 +41,10 @@ class TestViewSet(viewsets.ModelViewSet):
 class DeviceOutputViewSet(viewsets.ModelViewSet):
     queryset = DeviceOutput.objects.all()
     serializer_class = DeviceOutputSerializer
+
+class HourlyUsageViewSet(viewsets.ModelViewSet):
+    queryset = HourlyUsage.objects.all()
+    serializer_class = HourlyUsageSerializer
 
 
 # @cache_page(86400)

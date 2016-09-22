@@ -134,20 +134,31 @@ def create_device_data(sender, instance, **kwargs):
         # write function to create data based on
 
 
-#     {"well":23,
-# "reading_interval_s":3,
-# "adc_voltage_mv":1708,
-# "batt_voltage_mv":4197,
-# "batt_percent_charged":99,
-# "start_time":"2016-09-19T22:34:17",
-# "temp_readings_c":"10.0|20.0|30.0|40.0",
-# "end_time":"2016-09-19T17:57:49"}
+class HourlyUsage(models.Model):
+    well = models.ForeignKey(Well)
+    timestamp = models.DateTimeField()
+    usage_count = models.IntegerField()
 
 
-    # Create Wells
-    # test_well = Well(name="Test Well 2", latitude=36.993078,
-    #                  longitude=-79.904689, country="United States",
-    #                  date_installed="2016-06-20", last_update=timezone.now(),
-    #                  estimated_users=1100, cost_usd=5000,
-    #                  contractor="Test Contractor 2", flow_rate_lpm=160)
-    # test_well.save()
+class DailyUsage(models.Model):
+    well = models.ForeignKey(Well)
+    timestamp = models.DateTimeField()
+    usage_count = models.IntegerField()
+
+
+class WeeklyUsage(models.Model):
+    well = models.ForeignKey(Well)
+    timestamp = models.DateTimeField()
+    usage_count = models.IntegerField()
+
+
+class MonthlyUsage(models.Model):
+    well = models.ForeignKey(Well)
+    timestamp = models.DateTimeField()
+    usage_count = models.IntegerField()
+
+
+class YearlyUsage(models.Model):
+    well = models.ForeignKey(Well)
+    timestamp = models.DateTimeField()
+    usage_count = models.IntegerField()

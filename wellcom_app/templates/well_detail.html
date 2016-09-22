@@ -246,7 +246,9 @@
 
 {% endblock %} {% block scripts %}
 <script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="http://nvd3.org/assets/js/data/stream_layers.js"></script>
+<!-- <script src="http://nvd3.org/assets/js/data/stream_layers.js"></script> -->
+
+<script src="{% static js/nvd3_stream_layers.js %}"></script>
 <script src="{% static 'js/nv.d3.js' %}"></script>
 <script src="{% static 'js/graph.js' %}"></script>
 <script src="{% static 'js/well_detail.js' %}"></script>

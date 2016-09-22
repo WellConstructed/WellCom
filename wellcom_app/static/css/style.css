@@ -166,12 +166,13 @@ body {
   opacity: 0.6;
 }
 
-#help.pull-xs-left {
-  scroll-behavior: smooth;
-}
-
 table {
   font-family: 'Open Sans', sans-serif;
+}
+
+#all_well_data_wrapper tr:hover .sorting_1 {
+  color: #CB0000;
+  text-decoration: underline;
 }
 
 div.dataTables_length label, div.dataTables_filter label, div.dataTables_info {

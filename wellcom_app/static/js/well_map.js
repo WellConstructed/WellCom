@@ -19,7 +19,7 @@ $.ajax({
 
          var map = new google.maps.Map(document.getElementById('well_map'), {
             center: {lat: Number($wellData.latitude), lng: Number($wellData.longitude)},
-            zoom: 8,
+            zoom: 10,
             disableDefaultUI: true,
             scrollwheel: false,
             styles: [{

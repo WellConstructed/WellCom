@@ -8,14 +8,15 @@
 
 <body>
     <div class="container">
+        <div class="row" id="well_title_row">
+            <div id="well_title" class="col-xs-12 col-sm-12 col-md-12">
+                <h1>{{well.name}}</h1>
+                <p>Flowing Since: {{well.date_installed}}</p>
+            </div>
+        </div>
         <div class="row">
             <div id="well_info" class="col-xs-12 col-sm-12 col-md-4">
-                <h1>{{well.name}}</h1>
-                <ul>
-                    <li> Flowing Since: {{well.date_installed}} </li>
-                </ul>
                 <div id="well_map">
-                  Well
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8 with-3d-shadow with-transitions">
@@ -245,7 +246,8 @@
 
 {% endblock %} {% block scripts %}
 <script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="http://nvd3.org/assets/js/data/stream_layers.js"></script>
+<!-- <script src="http://nvd3.org/assets/js/data/stream_layers.js"></script> -->
+<script src="{% static 'js/nvd3_stream_layers.js' %}"></script>
 <script src="{% static 'js/nv.d3.js' %}"></script>
 <script src="{% static 'js/graph.js' %}"></script>
 <script src="{% static 'js/well_detail.js' %}"></script>

@@ -3,7 +3,7 @@ from .serializers import (WellSerializer, NoteSerializer, DeviceDataSerializer,
                           DeviceOutputSerializer, UsageSerializer,
                           WaterTestSerializer, TestSerializer, HourlyUsageSerializer)
 from django.views import generic
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, filters
 from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput, HourlyUsage
 from django.views.decorators.cache import cache_page
 
@@ -45,6 +45,15 @@ class DeviceOutputViewSet(viewsets.ModelViewSet):
 class HourlyUsageViewSet(viewsets.ModelViewSet):
     queryset = HourlyUsage.objects.all()
     serializer_class = HourlyUsageSerializer
+
+    def get_queryset(self):
+        queryset = HourlyUsage.objects.all()
+        well = self.request.query_params.get("well", None)
+        print("WELL", well)
+        if well is not None:
+            print("well is not none")
+            queryset = queryset.filter(well=well)
+        return queryset
 
 
 # @cache_page(86400)

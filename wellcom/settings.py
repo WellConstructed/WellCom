@@ -14,6 +14,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'django_filters',
     'coverage',
     'wellcom_app.apps.WellcomAppConfig',
     'rest_framework',

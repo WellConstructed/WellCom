@@ -1,20 +1,3 @@
 svg {
-  border: 2px #033F79;
-  border-style: outset;
-  /*padding-bottom: 25px;*/
-  /*padding: 25px;
-  margin: 20px;*/
-}
 
-#chart {
-    /*margin: 20px;
-    padding: 25px;*/
-}
-
-.nv-focus {
-    padding: 25px;
-}
-
-.nv-x .nv-axislabel {
-  transform: translate(0px,4em);
 }

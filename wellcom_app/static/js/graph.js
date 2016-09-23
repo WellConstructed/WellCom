@@ -1,6 +1,8 @@
 var $hourlyUsage;
 var $hourly_usage_table_data;
 var $hourly_usage_json;
+$urlComponents = document.URL.split('/');
+$wellId = $urlComponents[$urlComponents.length - 1];
 
 
 //   },
@@ -13,7 +15,7 @@ var $hourly_usage_json;
 $.ajax({
   type: 'GET',
   dataType: "json",
-  url: '/api/hourly_usage/',
+  url: '/api/hourly_usage/?well=' + $wellId,
   success: function(data, textStatus) {
     // Handle success
     $hourlyUsage = data;
@@ -25,7 +27,7 @@ $.ajax({
     nv.addGraph(function() {
         var chart = nv.models.multiBarChart()
           .reduceXTicks(true)   //If 'false', every single x-axis tick label will be rendered.
-          .rotateLabels(0)      //Angle to rotate x-axis labels.
+          .rotateLabels(10)      //Angle to rotate x-axis labels.
           .showControls(true)   //Allow user to switch between 'Grouped' and 'Stacked' mode.
           .groupSpacing(0.1)    //Distance between each group of bars.
         ;

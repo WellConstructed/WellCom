@@ -67,6 +67,7 @@ class TestSerializer(serializers.ModelSerializer):
         model = Test
         fields = ('id', 'text', 'timestamp')
 
+
 class HourlyUsageSerializer(serializers.ModelSerializer):
 
     class Meta:

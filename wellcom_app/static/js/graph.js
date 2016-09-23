@@ -1,120 +1,110 @@
-var $deviceData;
-var $device_data_table_data;
-var $device_data_json;
+var $hourlyUsage;
+var $hourly_usage_table_data;
+var $hourly_usage_json;
 
-// $.ajax({
-//   type: 'GET',
-//   dataType: "json",
-//   url: '/api/device_data/',
-//   success: function(data, textStatus) {
-//     // Handle success
-//     $deviceData = data;
-//
-//     $device_data_table_data = $deviceData.results;
-//
-//     $device_data_json = processDeviceData($device_data_table_data);
-//
-//
-//     nv.addGraph(function() {
-//             // var width = 600, height = 400;
-//             var chart = nv.models.lineWithFocusChart();
-//             chart.brushExtent([50,70]);
-//
-//             // chart.xAxis
-//             //   .tickFormat(d3.format(',f'))
-//             //   .axisLabel("Time");
-//
-//             chart.xAxis
-//               .tickFormat(function(d) {
-//                 return d3.time.format('%x')(new Date(d));
-//             })
-//               .axisLabel("Time");
-//
-//           chart.x2Axis
-//             .tickFormat(function(d) {
-//               return d3.time.format('%x')(new Date(d));
-//           });
-//
-//             // chart.x2Axis.tickFormat(d3.format(',f'));
-//
-//
-//             chart.yAxis
-//               .axisLabel("Temperature(C)");
-//             chart.yTickFormat(d3.format(',.2f'));
-//             chart.useInteractiveGuideline(true);
-//
-//             d3.select('#chart svg')
-//             //    .datum(myData())
-//                .datum($device_data_json)
-//               //  .style({ 'width': width, 'height': height })
-//                .call(chart);
-//
-//            nv.utils.windowResize(chart.update);
-//            return chart;
-//        });
-//
-//
+
 //   },
 //   error: function(xhr, textStatus, errorThrown) {
 //     // Handle error
 //   }
 // });
-//
-// function processDeviceData(device_data_table_data) {
-//     var series1 = [];
-//     for(var reading in device_data_table_data) {
-//         reading = device_data_table_data[reading];
-//         var xN = Number(new Date(reading.timestamp));
-//         var yN = Number(reading.temperature_c);
-//         // console.log(xN);
-//         // console.log(typeof xN);
-//         series1.push({
-//             // TODO: This is ugly!  We should get the data from Arduino as a timestamp, and this conversion would be unecessary
-//             x: xN,
-//             y: yN
-//         });
-//     }
-//     return [
-//         {
-//                     key: "Kogadoone",
-//                     values: series1,
-//                     color: "#0000ff"
-//                 }
-//     ];
-// }
 
-nv.addGraph(function() {
-    var chart = nv.models.multiBarChart()
-      .reduceXTicks(true)   //If 'false', every single x-axis tick label will be rendered.
-      .rotateLabels(0)      //Angle to rotate x-axis labels.
-      .showControls(true)   //Allow user to switch between 'Grouped' and 'Stacked' mode.
-      .groupSpacing(0.1)    //Distance between each group of bars.
-    ;
 
-    chart.xAxis
-        .tickFormat(d3.format(',f'));
+$.ajax({
+  type: 'GET',
+  dataType: "json",
+  url: '/api/hourly_usage/',
+  success: function(data, textStatus) {
+    // Handle success
+    $hourlyUsage = data;
 
-    chart.yAxis
-        .tickFormat(d3.format(',.1f'));
+    $hourly_usage_table_data = $hourlyUsage.results;
+    console.log($hourly_usage_table_data);
+    $hourly_usage_json = processHourlyUsage($hourly_usage_table_data);
 
-    d3.select('#chart svg')
-        .datum(exampleData())
-        .call(chart);
+    nv.addGraph(function() {
+        var chart = nv.models.multiBarChart()
+          .reduceXTicks(true)   //If 'false', every single x-axis tick label will be rendered.
+          .rotateLabels(0)      //Angle to rotate x-axis labels.
+          .showControls(true)   //Allow user to switch between 'Grouped' and 'Stacked' mode.
+          .groupSpacing(0.1)    //Distance between each group of bars.
+        ;
 
-    nv.utils.windowResize(chart.update);
+        chart.xAxis
+          .tickFormat(function(d) {
+            return d3.time.format('%x')(new Date(d));
+        })
+          .axisLabel("Time");
 
-    return chart;
-});
+        chart.yAxis
+            .tickFormat(d3.format(',.1f'))
+            .axisLabel("Usage Count")
+
+        d3.select('#chart svg')
+            .datum($hourly_usage_json)
+            .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+    });
+  }
+})
 
 //Generate some nice data.
-function exampleData() {
-  return stream_layers(3,10+Math.random()*100,.1).map(function(data, i) {
-    return {
-      key: 'Stream #' + i,
-      values: data
-    };
-  });
-}
+function processHourlyUsage($hourly_usage_table_data) {
+    var zorko = [];
+    var katanga = [];
+    var kogadoone = [];
+    var yipaala = [];
+    var atolisum = [];
+    var akukuni = [];
+    var zuboko = [];
 
-// TODO: Fix error: nv.d3.js:5 Uncaught TypeError: Cannot read property 'map' of undefined
-// http://stackoverflow.com/questions/17157554/nvd3-pie-chart-says-uncaught-typeerror-cannot-call-method-map-of-undefined
+    for(var reading in $hourly_usage_table_data) {
+        reading = $hourly_usage_table_data[reading];
+        var xN = Number(new Date(reading.timestamp));
+        var yN = Number(reading.usage_count);
+        zorko.push({
+            x: xN,
+            y: yN
+        });
+    }
+    return [
+        {
+                    key: "Zorko",
+                    values: zorko,
+                    color: "#0000ff"
+                },
+        {
+                    key: "Katanga",
+                    values: katanga,
+                    color: "#0000ff"
+                },
+        {
+                    key: "Kogadoone",
+                    values: kogadoone,
+                    color: "#0000ff"
+                },
+        {
+                    key: "Yipaala",
+                    values: yipaala,
+                    color: "#0000ff"
+                },
+        {
+                    key: "Atolisum",
+                    values: atolisum,
+                    color: "#0000ff"
+                },
+        {
+                    key: "Akukuni",
+                    values: akukuni,
+                    color: "#0000ff"
+                },
+        {
+                    key: "Zuboko",
+                    values: zuboko,
+                    color: "#0000ff"
+                }
+    ];
+}

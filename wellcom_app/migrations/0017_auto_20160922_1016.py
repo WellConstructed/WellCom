@@ -25,7 +25,7 @@ def add_hourly_usage(apps, schema_editor):
     # date_list = [base - datetime.timedelta(hours=x) for x in range(0, 24)]
     for well in wells:
         cur = datetime.datetime.today()
-        for index in range(744):
+        for index in range(24):
             cur -= datetime.timedelta(hours=1)
             pump_count = random.choice(range(*hours_daily[cur.hour]))
             cur = datetime.datetime(cur.year, cur.month, cur.day, cur.hour)

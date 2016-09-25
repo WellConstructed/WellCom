@@ -3,7 +3,7 @@ var $hourly_usage_table_data;
 var $hourly_usage_json;
 $urlComponents = document.URL.split('/');
 $wellId = $urlComponents[$urlComponents.length - 1];
-
+$wellId = parseInt($wellId);
 
 //   },
 //   error: function(xhr, textStatus, errorThrown) {
@@ -11,36 +11,44 @@ $wellId = $urlComponents[$urlComponents.length - 1];
 //   }
 // });
 
-
 $.ajax({
   type: 'GET',
   dataType: "json",
-  url: '/api/hourly_usage/?well=' + $wellId,
+  // url: '/api/hourly_usage/?well=' + $wellId,
+  url: '/api/hourly_usage/',
   success: function(data, textStatus) {
     // Handle success
     $hourlyUsage = data;
 
     $hourly_usage_table_data = $hourlyUsage.results;
-    console.log($hourly_usage_table_data);
     $hourly_usage_json = processHourlyUsage($hourly_usage_table_data);
+    $hourly_usage_json.forEach(function(stream) {
+      if (stream.well_id == $wellId) {
+        stream.disabled = false;
+      }
+    });
 
     nv.addGraph(function() {
         var chart = nv.models.multiBarChart()
           .reduceXTicks(true)   //If 'false', every single x-axis tick label will be rendered.
-          .rotateLabels(10)      //Angle to rotate x-axis labels.
+          .rotateLabels(-10)      //Angle to rotate x-axis labels.
           .showControls(true)   //Allow user to switch between 'Grouped' and 'Stacked' mode.
           .groupSpacing(0.1)    //Distance between each group of bars.
         ;
 
+
         chart.xAxis
           .tickFormat(function(d) {
-            return d3.time.format('%x')(new Date(d));
+            return d3.time.format('%d %b-%H:00')(new Date(d));
         })
+          // .xDomain([mindate, maxdate]);
           .axisLabel("Time");
+
 
         chart.yAxis
             .tickFormat(d3.format(',.1f'))
             .axisLabel("Usage Count")
+
 
         d3.select('#chart svg')
             .datum($hourly_usage_json)
@@ -53,60 +61,137 @@ $.ajax({
   }
 })
 
+
 //Generate some nice data.
+// function processHourlyUsage($hourly_usage_table_data) {
+//     var zorko = [];
+//     function sort(zorko) {
+//       return zorko.concat().sort();}
+//
+//     for(var reading in $hourly_usage_table_data) {
+//         reading = $hourly_usage_table_data[reading];
+//         var xN = Number(new Date(reading.timestamp));
+//         var yN = Number(reading.usage_count);
+//         zorko.push({
+//             x: xN,
+//             y: yN
+//         });
+//     }
+//     return [
+//         {
+//                     key: "Zorko",
+//                     values: zorko,
+//                     color: "#0000ff"
+//                 },
+//     ];
+// }
+
 function processHourlyUsage($hourly_usage_table_data) {
     var zorko = [];
-    var katanga = [];
     var kogadoone = [];
+    var katanga = [];
     var yipaala = [];
     var atolisum = [];
     var akukuni = [];
     var zuboko = [];
 
-    for(var reading in $hourly_usage_table_data) {
+    // function sort(zorko) {
+    //   return zorko.concat().sort();}
+    for (var reading in $hourly_usage_table_data) {
+    for (i=0; i<=reading.length; i++) {
         reading = $hourly_usage_table_data[reading];
         var xN = Number(new Date(reading.timestamp));
         var yN = Number(reading.usage_count);
-        zorko.push({
-            x: xN,
-            y: yN
-        });
-    }
+        if (reading.well == 1) {
+          zorko.push({
+              x: xN,
+              y: yN
+          });
+        } else if (reading.well == 2) {
+          katanga.push({
+              x: xN,
+              y: yN
+          });
+        }
+        else if (reading.well == 3) {
+          kogadoone.push({
+              x: xN,
+              y: yN
+          });
+        }
+        else if (reading.well == 4) {
+          yipaala.push({
+              x: xN,
+              y: yN
+          });
+        }
+        else if (reading.well == 5) {
+          atolisum.push({
+              x: xN,
+              y: yN
+          });
+        }
+        else if (reading.well == 6) {
+          akukuni.push({
+              x: xN,
+              y: yN
+          });
+        }
+        else if (reading.well == 7) {
+          zuboko.push({
+              x: xN,
+              y: yN
+          });
+        } } }
     return [
         {
                     key: "Zorko",
+                    disabled: true,
                     values: zorko,
-                    color: "#0000ff"
+                    color: "#0000ff",
+                    well_id: 1
                 },
         {
                     key: "Katanga",
+                    disabled: true,
                     values: katanga,
-                    color: "#0000ff"
+                    color: "#FF00FF",
+                    well_id: 2
                 },
         {
                     key: "Kogadoone",
+                    disabled: true,
                     values: kogadoone,
-                    color: "#0000ff"
+                    color: "#00FF00",
+                    well_id: 3
                 },
         {
                     key: "Yipaala",
+                    disabled: true,
                     values: yipaala,
-                    color: "#0000ff"
+                    color: "#9400D3",
+                    well_id: 4
                 },
         {
                     key: "Atolisum",
+                    disabled: true,
                     values: atolisum,
-                    color: "#0000ff"
+                    color: "#00FFFF",
+                    well_id: 5
                 },
         {
                     key: "Akukuni",
+                    disabled: true,
                     values: akukuni,
-                    color: "#0000ff"
+                    color: "#006400",
+                    well_id: 6
                 },
         {
                     key: "Zuboko",
+                    disabled: true,
                     values: zuboko,
-                    color: "#0000ff"
-                }
+                    color: "#A52A2A",
+                    well_id: 7
+        }
     ];
 }

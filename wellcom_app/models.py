@@ -17,6 +17,7 @@ class Well(models.Model):
     cost_usd = models.DecimalField(max_digits=8, decimal_places=2)  # hidden
     contractor = models.CharField(max_length=200)  # hidden
     flow_rate_lpm = models.DecimalField(max_digits=6, decimal_places=2)  # hidden
+    batt_percent_charged = models.IntegerField()
 
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''

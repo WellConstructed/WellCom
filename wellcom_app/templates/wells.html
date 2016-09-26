@@ -27,9 +27,10 @@
       <th>Country</th>
       <th>Install Date</th>
       <th>Depth</th>
-      <th>Last Update</th>
-      <th>Average Uses per Day</th>
-      <th>Estimated number of Users</th>
+      <th>Last Updated</th>
+      <th>Avg. Uses per Day</th>
+      <th>Est. Number of Users</th>
+      <th>Battery %</th>
     </tr>
   </thead>
   <tbody>
@@ -42,6 +43,7 @@
       <td>{{well.last_update | date:"M d Y" }}</td>
       <td></td>
       <td>{{well.estimated_users}}</td>
+      <td>{{well.batt_percent_charged}}</td>
     </tr>
     {% endfor %}
   </tbody>

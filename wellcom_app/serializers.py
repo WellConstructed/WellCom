@@ -55,8 +55,8 @@ class WellSerializer(serializers.ModelSerializer):
     class Meta:
         model = Well
         fields = ('id', 'name', 'latitude', 'longitude', 'country',
-                  'date_installed', 'last_update', 'note_set',
-                  'device_data_set', 'usage_set', 'water_test_set',
+                  'date_installed', 'last_update', 'batt_percent_charged',
+                  'note_set', 'device_data_set', 'usage_set', 'water_test_set',
                   'hourly_set')
 
 

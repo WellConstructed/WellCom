@@ -5,12 +5,16 @@ $urlComponents = document.URL.split('/');
 $wellId = $urlComponents[$urlComponents.length - 1];
 $wellId = parseInt($wellId);
 
+
 //   },
 //   error: function(xhr, textStatus, errorThrown) {
 //     // Handle error
 //   }
 // });
-
+// var mindate = new Date().setHours(0, 0, 0, 0);
+// mindate = new Date(mindate);
+// var maxdate = new Date().setHours(23, 0, 0, 0);
+// maxdate = new Date(maxdate);
 $.ajax({
   type: 'GET',
   dataType: "json",
@@ -36,18 +40,15 @@ $.ajax({
           .groupSpacing(0.1)    //Distance between each group of bars.
         ;
 
-
         chart.xAxis
           .tickFormat(function(d) {
             return d3.time.format('%d %b-%H:00')(new Date(d));
         })
-          // .xDomain([mindate, maxdate]);
-          .axisLabel("Time");
-
+          .axisLabel("Time(h)");
 
         chart.yAxis
             .tickFormat(d3.format(',.1f'))
-            .axisLabel("Usage Count")
+            .axisLabel("Usage Count");
 
 
         d3.select('#chart svg')
@@ -63,28 +64,6 @@ $.ajax({
 
 
 //Generate some nice data.
-// function processHourlyUsage($hourly_usage_table_data) {
-//     var zorko = [];
-//     function sort(zorko) {
-//       return zorko.concat().sort();}
-//
-//     for(var reading in $hourly_usage_table_data) {
-//         reading = $hourly_usage_table_data[reading];
-//         var xN = Number(new Date(reading.timestamp));
-//         var yN = Number(reading.usage_count);
-//         zorko.push({
-//             x: xN,
-//             y: yN
-//         });
-//     }
-//     return [
-//         {
-//                     key: "Zorko",
-//                     values: zorko,
-//                     color: "#0000ff"
-//                 },
-//     ];
-// }
 
 function processHourlyUsage($hourly_usage_table_data) {
     var zorko = [];
@@ -95,8 +74,6 @@ function processHourlyUsage($hourly_usage_table_data) {
     var akukuni = [];
     var zuboko = [];
 
-    // function sort(zorko) {
-    //   return zorko.concat().sort();}
     for (var reading in $hourly_usage_table_data) {
     for (i=0; i<=reading.length; i++) {
         reading = $hourly_usage_table_data[reading];
@@ -143,6 +120,32 @@ function processHourlyUsage($hourly_usage_table_data) {
               y: yN
           });
         } } }
+
+        zorko = zorko.sort(function(x, y){
+        return x.x - y.x;
+    });
+        kogadoone = kogadoone.sort(function(x, y){
+        return x.x - y.x;
+    });
+
+        katanga = katanga.sort(function(x, y){
+        return x.x - y.x;
+    });
+
+        yipaala = yipaala.sort(function(x, y){
+        return x.x - y.x;
+    });
+        atolisum = atolisum.sort(function(x, y){
+        return x.x - y.x;
+    });
+        akukuni = akukuni.sort(function(x, y){
+        return x.x - y.x;
+    });
+
+        zuboko = zuboko.sort(function(x, y){
+        return x.x - y.x;
+    });
+
     return [
         {
                     key: "Zorko",

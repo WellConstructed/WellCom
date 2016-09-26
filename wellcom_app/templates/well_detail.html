@@ -11,7 +11,7 @@
         <div class="row" id="well_title_row">
             <div id="well_title" class="col-xs-12 col-sm-12 col-md-12">
                 <h1>{{well.name}}</h1>
-                <p>Flowing Since: {{well.date_installed}}</p>
+                <p>Flowing Since: {{well.date_installed}} Last Updated:{{well.last_update | date:"M d Y" }}</p>
             </div>
         </div>
         <div class="row">
@@ -26,16 +26,14 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Last Update</th>
-                            <th>Number of Uses</th>
-                            <th>Overall average usage</th>
+                            <th>Total Usage</th>
+                            <th>Average Uses per Day</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td scope="row">{{well.last_update | date:"M d Y" }}</td>
                             <td></td>
-                            <td>{{all_avg.average}}</td>
+                            <td>{{avg_date.avg}}</td>
                         </tr>
                     </tbody>
                 </table>

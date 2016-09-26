@@ -81,7 +81,7 @@ def wells(request):
 def well_detail(request, well_id):
     wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
-    avg_date = HourlyUsage.objects.filter(well_id=well.id).annotate(date=TruncDate('timestamp')).values('date').aggregate(avg=Sum(F('usage_count'))/Count(F('date')))
+    avg_date = HourlyUsage.objects.filter(well_id=well.id).annotate(date=TruncDate('timestamp')).aggregate(avg=Sum('usage_count')/Count('date', distinct=True))
     try:
         water_tests = well.watertest_set.all()
     except:

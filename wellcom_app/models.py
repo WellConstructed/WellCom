@@ -30,10 +30,10 @@ class Well(models.Model):
         return self.name
 
     def average_daily_uses(self):
-        hourly_usage = self.hourlyusage_set.annotate(
+        avg_daily_uses = self.hourlyusage_set.annotate(
                             date=TruncDate('timestamp')).aggregate(avg=Sum(
                                 'usage_count')/Count('date', distinct=True))
-        return hourly_usage['avg']
+        return avg_daily_uses['avg']
 
 
 class Note(models.Model):

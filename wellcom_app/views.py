@@ -17,7 +17,6 @@ class WellViewSet(viewsets.ModelViewSet):
 
 class NoteViewSet(viewsets.ModelViewSet):
     queryset = Note.objects.all().order_by('created')
-    print(queryset[0])
     serializer_class = NoteSerializer
 
 

@@ -55,7 +55,7 @@ nav a:hover, a:focus {
 
 nav a.pull-xs-left {
   display: block;
-  padding: 1.5% 0;
+  padding: 2% 0;
 }
 
 ul.pull-xs-right {
@@ -234,6 +234,10 @@ Page: About Us
   display: block;
   width: 100%;
   padding: 5%;
+}
+
+#about_text {
+  font-size: 25;
 }
 
 

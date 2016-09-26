@@ -6,6 +6,7 @@ from django.views import generic
 from rest_framework import viewsets, generics, filters
 from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput, HourlyUsage
 from django.views.decorators.cache import cache_page
+from django.db.models import Avg
 
 
 class WellViewSet(viewsets.ModelViewSet):
@@ -41,6 +42,7 @@ class TestViewSet(viewsets.ModelViewSet):
 class DeviceOutputViewSet(viewsets.ModelViewSet):
     queryset = DeviceOutput.objects.all()
     serializer_class = DeviceOutputSerializer
+
 
 class HourlyUsageViewSet(viewsets.ModelViewSet):
     queryset = HourlyUsage.objects.all()
@@ -78,6 +80,8 @@ def wells(request):
 def well_detail(request, well_id):
     wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
+    all_avg = HourlyUsage.objects.filter(well_id=well.id).aggregate(average=Avg('usage_count'))
+    print('well', all_avg)
     try:
         water_tests = well.watertest_set.all()
     except:
@@ -96,6 +100,7 @@ def well_detail(request, well_id):
         'water_tests': water_tests,
         'device_data': device_data,
         'notes': notes,
+        'all_avg': all_avg,
     }
     return render(request, 'well_detail.html', context)
 

@@ -33,7 +33,7 @@
                     <tbody>
                         <tr>
                             <td>{{total_use.sum}}</td>
-                            <td>{{avg_date.avg}}</td>
+                            <td>{{well.average_daily_uses}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -229,7 +229,7 @@
                         <blockquote class="card-blockquote">
                             <h3 class="card-title"> {{note.title}}</h3>
                             <p>{{note.text}}</p>
-                            <footer>{{note.created}} <cite title="Source Title">Source Title</cite></footer>
+                            <footer>{{note.created}}</footer>
                         </blockquote>
                     </div>
                 </div>{% endfor %}

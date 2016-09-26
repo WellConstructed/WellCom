@@ -53,8 +53,9 @@ $.ajax({
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
               infowindow.setContent('<h4>' + $wellData[i].name + '</h4>'
-                  + '<h5> latitude:  ' + $wellData[i].latitude + '</h5>' +
-                    '<h5> longitude:  ' + $wellData[i].longitude + '</h5>');
+                  + '<h5> Flowing since:  ' + $wellData[i].date_installed + '</h5>' +
+                    '<h5> Last updated:  ' + $wellData[i].last_update.split('T')[0] + '</h5>' +
+                    '<h5> Battery:  ' + $wellData[i].batt_percent_charged + '%' + '</h5>');
               infowindow.open(map, marker);
     }
   })(marker, i));

@@ -16,7 +16,8 @@ class WellViewSet(viewsets.ModelViewSet):
 
 
 class NoteViewSet(viewsets.ModelViewSet):
-    queryset = Note.objects.all()
+    queryset = Note.objects.all().order_by('created')
+    print(queryset[0])
     serializer_class = NoteSerializer
 
 
@@ -85,7 +86,6 @@ def wells(request):
 def well_detail(request, well_id):
     wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
-    avg_date = HourlyUsage.objects.filter(well_id=well.id).annotate(date=TruncDate('timestamp')).aggregate(avg=Sum('usage_count')/Count('date', distinct=True))
     total_use = HourlyUsage.objects.filter(well_id=well.id).aggregate(sum=Sum('usage_count'))
     try:
         water_tests = well.watertest_set.all()
@@ -105,7 +105,6 @@ def well_detail(request, well_id):
         'water_tests': water_tests,
         'device_data': device_data,
         'notes': notes,
-        'avg_date': avg_date,
         'total_use': total_use
     }
     return render(request, 'well_detail.html', context)

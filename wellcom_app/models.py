@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from datetime import datetime, timedelta
+from django.db.models import Count, Sum
+from django.db.models.functions import TruncDate
 
 
 class Well(models.Model):
@@ -26,6 +28,12 @@ class Well(models.Model):
 
     def __str__(self):
         return self.name
+
+    def average_daily_uses(self):
+        avg_daily_uses = self.hourlyusage_set.annotate(
+                            date=TruncDate('timestamp')).aggregate(avg=Sum(
+                                'usage_count')/Count('date', distinct=True))
+        return avg_daily_uses['avg']
 
 
 class Note(models.Model):

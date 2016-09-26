@@ -15,13 +15,14 @@ $.ajax({
 
     var  map = new google.maps.Map(document.getElementById('all_well_map'), {
         center: {lat: 36.9930780, lng: -79.9046890},
-        zoom: 8,
+        zoom: 9,
         scrollwheel: false,
+        mapTypeId: 'terrain',
         styles: [
              {
                featureType: 'all',
                stylers: [
-                 { saturation: -70 }
+                 { saturation: 100 }
                ]
              }
            ]

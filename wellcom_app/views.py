@@ -62,8 +62,10 @@ class HourlyUsageViewSet(viewsets.ModelViewSet):
 # @cache_page(86400)
 def about_us(request):
     wells = Well.objects.all()
+
     context = {
         'wells': wells,
+
     }
     return render(request, 'about_us.html', context)
 
@@ -71,8 +73,10 @@ def about_us(request):
 # @cache_page(86400)
 def wells(request):
     wells = Well.objects.all()
+    # avg_date = HourlyUsage.objects.order_by(well_id='id').annotate(date=TruncDate('timestamp')).aggregate(avg=Sum('usage_count')/Count('date', distinct=True))
     context = {
         'wells': wells,
+        # 'avg_date': avg_date
     }
     return render(request, 'wells.html', context)
 

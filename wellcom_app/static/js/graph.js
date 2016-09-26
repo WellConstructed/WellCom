@@ -151,49 +151,49 @@ function processHourlyUsage($hourly_usage_table_data) {
                     key: "Zorko",
                     disabled: true,
                     values: zorko,
-                    color: "#0000ff",
+                    color: "#A0DFFF",
                     well_id: 1
                 },
         {
                     key: "Katanga",
                     disabled: true,
                     values: katanga,
-                    color: "#FF00FF",
+                    color: "#301BD1",
                     well_id: 2
                 },
         {
                     key: "Kogadoone",
                     disabled: true,
                     values: kogadoone,
-                    color: "#00FF00",
+                    color: "#369FF4",
                     well_id: 3
                 },
         {
                     key: "Yipaala",
                     disabled: true,
                     values: yipaala,
-                    color: "#9400D3",
+                    color: "#E7A4A3",
                     well_id: 4
                 },
         {
                     key: "Atolisum",
                     disabled: true,
                     values: atolisum,
-                    color: "#00FFFF",
+                    color: "#9F0005",
                     well_id: 5
                 },
         {
                     key: "Akukuni",
                     disabled: true,
                     values: akukuni,
-                    color: "#006400",
+                    color: "#CB0000",
                     well_id: 6
                 },
         {
                     key: "Zuboko",
                     disabled: true,
                     values: zuboko,
-                    color: "#A52A2A",
+                    color: "#00102C",
                     well_id: 7
         }
     ];

@@ -6,6 +6,8 @@ from django.views import generic
 from rest_framework import viewsets, generics, filters
 from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput, HourlyUsage
 from django.views.decorators.cache import cache_page
+from django.db.models import Avg, Count, Sum, F
+from django.db.models.functions import TruncDate
 
 
 class WellViewSet(viewsets.ModelViewSet):
@@ -41,6 +43,7 @@ class TestViewSet(viewsets.ModelViewSet):
 class DeviceOutputViewSet(viewsets.ModelViewSet):
     queryset = DeviceOutput.objects.all()
     serializer_class = DeviceOutputSerializer
+
 
 class HourlyUsageViewSet(viewsets.ModelViewSet):
     queryset = HourlyUsage.objects.all()
@@ -78,6 +81,7 @@ def wells(request):
 def well_detail(request, well_id):
     wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
+    avg_date = HourlyUsage.objects.filter(well_id=well.id).annotate(date=TruncDate('timestamp')).values('date').aggregate(avg=Sum(F('usage_count'))/Count(F('date')))
     try:
         water_tests = well.watertest_set.all()
     except:
@@ -96,6 +100,7 @@ def well_detail(request, well_id):
         'water_tests': water_tests,
         'device_data': device_data,
         'notes': notes,
+        'avg_date': avg_date,
     }
     return render(request, 'well_detail.html', context)
 

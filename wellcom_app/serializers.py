@@ -38,17 +38,26 @@ class WaterTestSerializer(serializers.ModelSerializer):
                   'ammonia_nitrogen', 'manganese', 'aluminum')
 
 
+class HourlyUsageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = HourlyUsage
+        fields = ('id', 'well', 'timestamp', 'usage_count')
+
+
 class WellSerializer(serializers.ModelSerializer):
     note_set = NoteSerializer(many=True, read_only=True)
     device_data_set = DeviceDataSerializer(many=True, read_only=True)
     usage_set = UsageSerializer(many=True, read_only=True)
     water_test_set = WaterTestSerializer(many=True, read_only=True)
+    hourly_set = HourlyUsageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Well
         fields = ('id', 'name', 'latitude', 'longitude', 'country',
                   'date_installed', 'last_update', 'note_set',
-                  'device_data_set', 'usage_set', 'water_test_set')
+                  'device_data_set', 'usage_set', 'water_test_set',
+                  'hourly_set')
 
 
 class DeviceOutputSerializer(serializers.ModelSerializer):
@@ -66,10 +75,3 @@ class TestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Test
         fields = ('id', 'text', 'timestamp')
-
-
-class HourlyUsageSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = HourlyUsage
-        fields = ('id', 'well', 'timestamp', 'usage_count')

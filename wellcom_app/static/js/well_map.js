@@ -22,10 +22,11 @@ $.ajax({
             zoom: 10,
             disableDefaultUI: true,
             scrollwheel: false,
+            mapTypeId: 'terrain',
             styles: [{
                 featureType: 'all',
                 stylers: [{
-                    saturation: -70
+                    saturation: 100
                 }]
             }]
         });

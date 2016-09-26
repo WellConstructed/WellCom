@@ -170,6 +170,19 @@ table {
   font-family: 'Open Sans', sans-serif;
 }
 
+#usage_info {
+  text-align: center;
+  color: black;
+  width: 50%;
+  margin-left: 28%;
+}
+
+#usage_info th {
+  text-align: center
+}
+
+
+
 #all_well_data_wrapper tr:hover .sorting_1 {
   color: #CB0000;
   text-decoration: underline;

@@ -82,7 +82,6 @@ def well_detail(request, well_id):
     wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
     avg_date = HourlyUsage.objects.filter(well_id=well.id).annotate(date=TruncDate('timestamp')).values('date').aggregate(avg=Sum(F('usage_count'))/Count(F('date')))
-    print('well', all_avg)
     try:
         water_tests = well.watertest_set.all()
     except:
@@ -101,7 +100,6 @@ def well_detail(request, well_id):
         'water_tests': water_tests,
         'device_data': device_data,
         'notes': notes,
-        'all_avg': all_avg,
         'avg_date': avg_date,
     }
     return render(request, 'well_detail.html', context)

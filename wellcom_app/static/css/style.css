@@ -289,3 +289,11 @@ tfoot {
   font-family: 'Open Sans', sans-serif;
   color: #369FF4;
 }
+
+/***************************************************
+nvd3
+***************************************************/
+
+.nvd3.nv-legend .nv-series:last-of-type {
+  transform: translate(0, 22px);
+}

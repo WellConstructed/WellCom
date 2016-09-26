@@ -83,9 +83,9 @@ def wells(request):
 
 
 # @cache_page(86400)
-def well_detail(request, well_id):
+def well_detail(request, slug):
     wells = Well.objects.all()
-    well = get_object_or_404(Well, id=well_id)
+    well = get_object_or_404(Well, slug=slug)
     total_use = HourlyUsage.objects.filter(well_id=well.id).aggregate(sum=Sum('usage_count'))
     try:
         water_tests = well.watertest_set.all()

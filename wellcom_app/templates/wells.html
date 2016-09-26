@@ -28,7 +28,7 @@
       <th>Install Date</th>
       <th>Depth</th>
       <th>Last Updated</th>
-      <th>Avg. Uses per Day</th>
+      <th>Avg. Daily Uses</th>
       <th>Est. Number of Users</th>
       <th>Battery %</th>
     </tr>
@@ -38,9 +38,9 @@
     <tr class="clickable-row" data-href="{% url 'well_detail' well.pk %}">
       <td scope="row">{{ well.name }}</td>
       <td>{{well.country}}</td>
-      <td>{{well.date_installed | date:"M d Y" }}</td>
+      <td>{{well.date_installed | date:"M d, Y" }}</td>
       <td>{{well.depth_m}}</td>
-      <td>{{well.last_update | date:"M d Y" }}</td>
+      <td>{{well.last_update | date:"M d, Y" }}</td>
       <td>{{well.average_daily_uses}}</td>
       <td>{{well.estimated_users}}</td>
       <td>{{well.batt_percent_charged}}</td>

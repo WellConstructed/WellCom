@@ -20,11 +20,13 @@ class Well(models.Model):
     contractor = models.CharField(max_length=200)  # hidden
     flow_rate_lpm = models.DecimalField(max_digits=6, decimal_places=2)  # hidden
     batt_percent_charged = models.IntegerField()
+    slug = models.SlugField(max_length=100, unique=True)
 
     def save(self, *args, **kwargs):
         ''' On save, update timestamps '''
         self.last_update = timezone.now()
         return super(Well, self).save(*args, **kwargs)
+
 
     def __str__(self):
         return self.name

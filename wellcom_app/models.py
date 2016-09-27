@@ -38,6 +38,11 @@ class Well(models.Model):
                                 'usage_count')/Count('date', distinct=True))
         return avg_daily_uses['avg']
 
+    def get_well_name_from_id(well_id):
+        queryset = Well.objects.values('id', 'name')
+        for well in queryset:
+            if well['id'] == well_id:
+                return well['id']
 
 class Note(models.Model):
     well = models.ForeignKey(Well)

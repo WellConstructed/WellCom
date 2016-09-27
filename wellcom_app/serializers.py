@@ -43,21 +43,29 @@ class HourlyUsageSerializer(serializers.ModelSerializer):
     class Meta:
         model = HourlyUsage
         fields = ('id', 'well', 'timestamp', 'usage_count')
+        # fields = ('id', 'well', 'usage_count')
+        # fields = ('id', 'well', 'well_name', 'timestamp', 'usage_count')
+
+
+class WellNameHourlyUsageSerializer(serializers.ModelSerializer):
+    hourly_set = HourlyUsageSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Well
+        fields = ('id', 'name', 'hourly_set')
 
 
 class WellSerializer(serializers.ModelSerializer):
-    note_set = NoteSerializer(many=True, read_only=True)
-    device_data_set = DeviceDataSerializer(many=True, read_only=True)
-    usage_set = UsageSerializer(many=True, read_only=True)
-    water_test_set = WaterTestSerializer(many=True, read_only=True)
-    hourly_set = HourlyUsageSerializer(many=True, read_only=True)
+    # note_set = NoteSerializer(many=True, read_only=True)
+    # usage_set = UsageSerializer(many=True, read_only=True)
+    # watertest_set = WaterTestSerializer(many=True, read_only=True)
+    # hourlyusage_set = HourlyUsageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Well
         fields = ('id', 'name', 'latitude', 'longitude', 'country',
                   'date_installed', 'last_update', 'batt_percent_charged',
-                  'note_set', 'device_data_set', 'usage_set', 'water_test_set',
-                  'hourly_set')
+                  'note_set', 'usage_set', 'watertest_set', 'hourlyusage_set')
 
 
 class DeviceOutputSerializer(serializers.ModelSerializer):

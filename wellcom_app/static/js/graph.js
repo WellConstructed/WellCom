@@ -15,6 +15,7 @@ $wellId = parseInt($wellId);
 // mindate = new Date(mindate);
 // var maxdate = new Date().setHours(23, 0, 0, 0);
 // maxdate = new Date(maxdate);
+
 $.ajax({
   type: 'GET',
   dataType: "json",

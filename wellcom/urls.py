@@ -12,6 +12,8 @@ router.register(r'well', views.WellViewSet)
 router.register(r'device_output', views.DeviceOutputViewSet)
 router.register(r'test', views.TestViewSet)
 router.register(r'hourly_usage', views.HourlyUsageViewSet)
+# router.register(r'well_name', views.WellNameViewSet)
+router.register(r'hourly', views.WellNameHourlyUsageViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

@@ -185,7 +185,7 @@ function processHourlyUsage($hourly_usage_table_data) {
                     key: "Katanga",
                     disabled: true,
                     values: katanga,
-                    color: "#301BD1",
+                    color: "#0D47A1",
                     well_id: 2
                 },
         {

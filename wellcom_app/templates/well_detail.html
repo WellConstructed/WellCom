@@ -4,6 +4,9 @@
 </title>
 {% block header %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/graph.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.structure.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.theme.min.css' %}">
 {% endblock %} {% block body %}
 
 <body>
@@ -21,6 +24,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-8 with-3d-shadow with-transitions">
                 <div id="chart">
+                    <!-- <p>Date: <input type="text" id="datepicker"></p> -->
                     <svg></svg>
                 </div>
                 <table class="table table-hover" id="usage_info">
@@ -243,8 +247,9 @@
 </body>
 
 {% endblock %} {% block scripts %}
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
 <script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="{% static 'js/nvd3_stream_layers.js' %}"></script>
+<!-- <script src="{% static 'js/nvd3_stream_layers.js' %}"></script> -->
 <script src="{% static 'js/nv.d3.js' %}"></script>
 <script src="{% static 'js/graph.js' %}"></script>
 <script src="{% static 'js/well_detail.js' %}"></script>

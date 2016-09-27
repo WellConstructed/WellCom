@@ -11,7 +11,10 @@ $wellId = parseInt($wellId);
 //     // Handle error
 //   }
 // });
-
+// var mindate = new Date().setHours(0, 0, 0, 0);
+// mindate = new Date(mindate);
+// var maxdate = new Date().setHours(23, 0, 0, 0);
+// maxdate = new Date(maxdate);
 
 // (TODO: Make this datepicker update the x-axis for new data to be drawn)
 // $( function() {
@@ -26,7 +29,6 @@ $wellId = parseInt($wellId);
 //       console.log(d3.time.hour.range(dateAsObject, d3.time.day.offset(dateAsObject, 1)));
 //    }
 // });
-
 
 
 $.ajax({

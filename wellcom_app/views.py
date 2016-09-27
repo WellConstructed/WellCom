@@ -1,18 +1,27 @@
 from django.shortcuts import render, get_object_or_404
 from .serializers import (WellSerializer, NoteSerializer, DeviceDataSerializer,
                           DeviceOutputSerializer, UsageSerializer,
-                          WaterTestSerializer, TestSerializer, HourlyUsageSerializer)
+                          WaterTestSerializer, TestSerializer,
+                          HourlyUsageSerializer,
+                          WellNameHourlyUsageSerializer)
 from django.views import generic
 from rest_framework import viewsets, generics, filters
-from .models import Well, Note, DeviceData, Usage, WaterTest, Test, DeviceOutput, HourlyUsage
+from .models import (Well, Note, DeviceData, Usage, WaterTest, Test,
+                     DeviceOutput, HourlyUsage)
 from django.views.decorators.cache import cache_page
 from django.db.models import Avg, Count, Sum, F
 from django.db.models.functions import TruncDate
-
+from django.http import JsonResponse
 
 class WellViewSet(viewsets.ModelViewSet):
     queryset = Well.objects.all()
     serializer_class = WellSerializer
+
+
+# class WellNameViewSet(viewsets.ModelViewSet):
+#     #  TODO: We should only pull well id and name
+#     queryset = Well.objects.all()
+#     serializer_class = WellNameSerializer
 
 
 class NoteViewSet(viewsets.ModelViewSet):
@@ -45,17 +54,31 @@ class DeviceOutputViewSet(viewsets.ModelViewSet):
     serializer_class = DeviceOutputSerializer
 
 
+class WellNameHourlyUsageViewSet(viewsets.ModelViewSet):
+    queryset = Well.objects.all()
+    serializer_class = WellNameHourlyUsageSerializer
+
+
 class HourlyUsageViewSet(viewsets.ModelViewSet):
     queryset = HourlyUsage.objects.all()
     serializer_class = HourlyUsageSerializer
 
     def get_queryset(self):
+        well_id = self.request.query_params.get("well", None)
         queryset = HourlyUsage.objects.all()
-        well = self.request.query_params.get("well", None)
-        print("WELL", well)
-        if well is not None:
+        print("WELL ID", well_id)
+
+        # print("well_names", well_names)
+        if well_id is None:
+            for hourly in queryset:
+                pass
+                # print(wellget_well_name_id_dict)
+        else:
             print("well is not none")
-            queryset = queryset.filter(well=well)
+            name = Well.objects.get(pk=well_id)
+            print("name", name)
+            queryset = queryset.filter(well=well_id).annotate(name=name)
+        print(queryset)
         return queryset
 
 
@@ -85,7 +108,8 @@ def wells(request):
 def well_detail(request, well_id):
     wells = Well.objects.all()
     well = get_object_or_404(Well, id=well_id)
-    total_use = HourlyUsage.objects.filter(well_id=well.id).aggregate(sum=Sum('usage_count'))
+    total_use = HourlyUsage.objects.filter(
+                            well_id=well.id).aggregate(sum=Sum('usage_count'))
     try:
         water_tests = well.watertest_set.all()
     except:
@@ -117,3 +141,10 @@ def test_device_view(request):
         'device_data': device_data,
     }
     return render(request, 'test_device_data.html', context)
+
+
+# def well_name_view(request):
+#     if request.method == "GET":
+#         data = Well.objects.values('id', 'name')
+#         # data = [{'id': person.name, 'surname': person.surname} for person in queryset]
+#         return render(request, JsonResponse(data, safe=False)

@@ -119,7 +119,7 @@ def well_detail(request, well_id):
     except:
         device_data = None
     try:
-        notes = well.note_set.all()
+        notes = well.note_set.all().order_by('-created')
     except:
         notes = None
     context = {

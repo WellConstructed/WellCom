@@ -11,10 +11,24 @@ $wellId = parseInt($wellId);
 //     // Handle error
 //   }
 // });
-// var mindate = new Date().setHours(0, 0, 0, 0);
-// mindate = new Date(mindate);
-// var maxdate = new Date().setHours(23, 0, 0, 0);
-// maxdate = new Date(maxdate);
+
+
+// (TODO: Make this datepicker update the x-axis for new data to be drawn)
+// $( function() {
+//   $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
+// } );
+//
+// $("#datepicker").datepicker({
+//    onSelect: function(dateText, inst) {
+//       var dateAsString = dateText; //the first parameter of this function
+//       var dateAsObject = $(this).datepicker( 'getDate' ); //the getDate method
+//       console.log(dateAsObject);
+//       console.log(d3.time.hour.range(dateAsObject, d3.time.day.offset(dateAsObject, 1)));
+//    }
+// });
+
+
+
 $.ajax({
   type: 'GET',
   dataType: "json",
@@ -35,16 +49,19 @@ $.ajax({
     nv.addGraph(function() {
         var chart = nv.models.multiBarChart()
           .reduceXTicks(true)   //If 'false', every single x-axis tick label will be rendered.
-          .rotateLabels(-10)      //Angle to rotate x-axis labels.
+          .rotateLabels(-8)      //Angle to rotate x-axis labels.
           .showControls(true)   //Allow user to switch between 'Grouped' and 'Stacked' mode.
           .groupSpacing(0.1)    //Distance between each group of bars.
         ;
 
         chart.xAxis
           .tickFormat(function(d) {
+            // return d3.time.format('%d %b-%H:00')(new Date(d));
             return d3.time.format('%d %b-%H:00')(new Date(d));
         })
           .axisLabel("Time(h)");
+
+
 
         chart.yAxis
             .tickFormat(d3.format(',.1f'))
@@ -62,8 +79,18 @@ $.ajax({
   }
 })
 
+// (TODO: Use update function with datepicker to alter xaxis)
+// function update() {
+//     var data = economyData();
+//
+//     // Update the SVG with the new data and call chart
+//     chartData.x(data).transition().duration(500).call(chart);
+//     nv.utils.windowResize(chart.update);
+// };
+//
+// // Update the CHART
+// d3.select('#chart svg').on("click", update);
 
-//Generate some nice data.
 
 function processHourlyUsage($hourly_usage_table_data) {
     var zorko = [];

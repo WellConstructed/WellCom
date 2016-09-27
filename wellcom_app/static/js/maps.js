@@ -31,11 +31,12 @@ $.ajax({
       var bounds = new google.maps.LatLngBounds();
       var infowindow = new google.maps.InfoWindow();
 
+      // TODO: add in logic for different images here!
+
       var image = {
             url: 'https://wellcom-staging.herokuapp.com/static/images/BlueSymbol.png',
             scaledSize: new google.maps.Size(45, 56),
           };
-
 
       var marker, i;
 

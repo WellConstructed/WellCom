@@ -15,7 +15,7 @@ $.ajax({
 
     var  map = new google.maps.Map(document.getElementById('all_well_map'), {
         center: {lat: 36.9930780, lng: -79.9046890},
-        zoom: 9,
+        zoom: 8,
         scrollwheel: false,
         mapTypeId: 'terrain',
         styles: [
@@ -33,9 +33,17 @@ $.ajax({
 
       // TODO: add in logic for different images here!
 
-      var image = {
-            url: 'https://wellcom-staging.herokuapp.com/static/images/BlueSymbol.png',
-            scaledSize: new google.maps.Size(45, 56),
+      var imagebase = 'https://wellcom-staging.herokuapp.com/static/images/'
+      var images = {
+            good: {
+              icon: imagebase + 'BlueSymbol.png',
+            },
+            down_com: {
+              icon: imagebase + 'ic_signal_cellular_connected_no_internet_4_bar_black_24dp_2x.png',
+            },
+            non_use: {
+              icon: imagebase + 'ic_build_black_24dp_2x.png',
+            },
           };
 
       var marker, i;
@@ -46,7 +54,11 @@ $.ajax({
               // position: new google.maps.LatLng($wellData[i].latitude, $wellData[i].longitude),
               position: new google.maps.LatLng(Number($wellData[i].latitude), Number($wellData[i].longitude)),
               map: map,
-              icon: image,
+              icon: {
+                url: images.good.icon,
+                
+                scaledSize: new google.maps.Size(45, 56),
+              }
           });
 
           bounds.extend(marker.position);

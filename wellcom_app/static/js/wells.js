@@ -16,3 +16,9 @@ $(window).scroll(function(){
 $(window).scroll(function(){
     $(".fix").css("opacity", 0.6 - $(window).scrollTop() / 250);
   });
+
+var myElements = document.querySelector("#battery");
+
+  if (Well.batt_percent_charged >=75) {
+    myElements.style.color = #CB0000;
+}

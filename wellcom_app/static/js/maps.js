@@ -11,7 +11,6 @@ $.ajax({
   success: function(data, textStatus) {
     // Handle success
     $wellData = data.results;
-    console.log($wellData);
 
     var  map = new google.maps.Map(document.getElementById('all_well_map'), {
         center: {lat: 36.9930780, lng: -79.9046890},
@@ -48,15 +47,24 @@ $.ajax({
 
       var marker, i;
 
+
       for (i = 0; i < $wellData.length; i++) {
+        // TODO: TAKE THIS OUT later and replace with actual logic
+        if ($wellData[i].name == "Zuboko-Bongo") {
+          var image = images.down_com.icon;
+        } else if ($wellData[i].name == "Katanga") {
+          var image = images.non_use.icon;
+        } else {
+          var image = images.good.icon;
+        }
 
           marker = new google.maps.Marker({
               // position: new google.maps.LatLng($wellData[i].latitude, $wellData[i].longitude),
               position: new google.maps.LatLng(Number($wellData[i].latitude), Number($wellData[i].longitude)),
               map: map,
               icon: {
-                url: images.good.icon,
-                
+                url: image,
+
                 scaledSize: new google.maps.Size(45, 56),
               }
           });

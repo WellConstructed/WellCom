@@ -19,6 +19,6 @@ $(window).scroll(function(){
 
 var myElements = document.querySelector("#battery");
 
-  if (Well.batt_percent_charged >=75) {
-    myElements.style.color = #CB0000;
-}
+//   if (Well.batt_percent_charged >=75) {
+//     myElements.style.color = #CB0000;
+// }

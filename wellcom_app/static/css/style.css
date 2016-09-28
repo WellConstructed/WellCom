@@ -238,11 +238,20 @@ Page: About Us
   padding: 5%;
 }
 
-#about_text {
-  font-size: 25;
+#what p, #how p, #who p {
+  font-size: 1.5em;
 }
 
+#how li {
+  transform: translate(15%, 0);
+  padding: 1% 0;
+  list-style: circle;
+  font-size: 1.5em;
+}
 
+#what h1, #how h1, #who h1 {
+  padding-bottom: 1.5%
+}
 /***************************************************
 well detail
 ***************************************************/

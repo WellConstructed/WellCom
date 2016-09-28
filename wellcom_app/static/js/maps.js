@@ -65,7 +65,7 @@ $.ajax({
               icon: {
                 url: image,
 
-                scaledSize: new google.maps.Size(45, 56),
+                scaledSize: new google.maps.Size(45, 53),
               }
           });
 
